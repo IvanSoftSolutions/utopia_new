@@ -8,6 +8,8 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
+import Formulas from '../../pages/formulas.js';
+
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -43,33 +45,60 @@ function a11yProps(index) {
 
 export default function Home() {
   const [value, setValue] = React.useState(0);
+  const [nestedValue, setNestedValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    setNestedValue(0);
   };
+
+  const handleNestedChange = (event, newValue) => {
+    setNestedValue(newValue);
+  };
+
   return (
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+        <Tabs value={value} onChange={handleChange} aria-label="main tabs" centered>
           <Tab label="Formulas" {...a11yProps(0)} />
-          <Tab label="Chemicals" {...a11yProps(1)} />
-          <Tab label="Hides Inventory" {...a11yProps(2)} />
-          <Tab label="Imports" {...a11yProps(3)} />
+          <Tab label="Quimicos" {...a11yProps(1)} />
+          <Tab label="Inventario Pieles" {...a11yProps(2)} />
+          <Tab label="Importaciones" {...a11yProps(3)} />
           <Tab label="Ventas" {...a11yProps(4)} />
           <Tab label="Maquilas" {...a11yProps(5)} />
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-            <Tab label="Search/Run" {...a11yProps(0)} />
-            <Tab label="Log/Report" {...a11yProps(1)} />
+          <Tabs value={nestedValue} onChange={handleNestedChange} aria-label="formulas tabs" centered>
+            <Tab label="Buscar/Correr" {...a11yProps(0)} />
+            <Tab label="Bitacora/Reportes" {...a11yProps(1)} />
             <Tab label="Engrases" {...a11yProps(2)} />
           </Tabs>
         </Box>
+        <CustomTabPanel value={nestedValue} index={0}>
+          <Formulas />
+        </CustomTabPanel>
+        <CustomTabPanel value={nestedValue} index={1}>
+          Item Two
+        </CustomTabPanel>
+        <CustomTabPanel value={nestedValue} index={2}>
+          Item Three
+        </CustomTabPanel>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        Item Two
+        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+          <Tabs value={nestedValue} onChange={handleNestedChange} aria-label="formulas tabs" centered>
+            <Tab label="Inventario Quimicos" {...a11yProps(0)} />
+            <Tab label="Entrada/Salida" {...a11yProps(1)} />
+          </Tabs>
+        </Box>
+        <CustomTabPanel value={nestedValue} index={0}>
+          Item One
+        </CustomTabPanel>
+        <CustomTabPanel value={nestedValue} index={1}>
+          Item Two
+        </CustomTabPanel>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
         Item Three
@@ -78,10 +107,32 @@ export default function Home() {
         Item Four
       </CustomTabPanel>
       <CustomTabPanel value={value} index={4}>
-        Item Five
+        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+          <Tabs value={nestedValue} onChange={handleNestedChange} aria-label="formulas tabs" centered>
+            <Tab label="Ventas" {...a11yProps(0)} />
+            <Tab label="Maquilas" {...a11yProps(1)} />
+          </Tabs>
+        </Box>
+        <CustomTabPanel value={nestedValue} index={0}>
+          Item One
+        </CustomTabPanel>
+        <CustomTabPanel value={nestedValue} index={1}>
+          Item Two
+        </CustomTabPanel>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={5}>
-        Item Six
+        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+          <Tabs value={nestedValue} onChange={handleNestedChange} aria-label="formulas tabs" centered>
+            <Tab label="Ventas" {...a11yProps(0)} />
+            <Tab label="Maquilas" {...a11yProps(1)} />
+          </Tabs>
+        </Box>
+        <CustomTabPanel value={nestedValue} index={0}>
+          Item One
+        </CustomTabPanel>
+        <CustomTabPanel value={nestedValue} index={1}>
+          Item Two
+        </CustomTabPanel>
       </CustomTabPanel>
     </Box>
   )
