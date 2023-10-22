@@ -8,7 +8,14 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
-import Formulas from '../../pages/formulas.js';
+import Formulas from '../../pages/formulas_tabs/formulas';
+import Bitacora_reportes from '../../pages/formulas_tabs/bitacora_reportes';
+import Engrases from '../../pages/formulas_tabs/engrases';
+import Quimicos_inventario from '../../pages/quimicos_tabs/quimicos_inventario';
+import Quimicos_entrada_salida from '../../pages/quimicos_tabs/quimicos_entrada_salida';
+import Inventario_pieles from '../../pages/inventario_pieles';
+import Importaciones from '../../pages/importaciones';
+import Ventas from '../../pages/ventas';
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -80,59 +87,37 @@ export default function Home() {
           <Formulas />
         </CustomTabPanel>
         <CustomTabPanel value={nestedValue} index={1}>
-          Item Two
+          <Bitacora_reportes />
         </CustomTabPanel>
         <CustomTabPanel value={nestedValue} index={2}>
-          Item Three
+          <Engrases />
         </CustomTabPanel>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <Tabs value={nestedValue} onChange={handleNestedChange} aria-label="formulas tabs" centered>
+          <Tabs value={nestedValue} onChange={handleNestedChange} aria-label="quimicos tabs" centered>
             <Tab label="Inventario Quimicos" {...a11yProps(0)} />
             <Tab label="Entrada/Salida" {...a11yProps(1)} />
           </Tabs>
         </Box>
         <CustomTabPanel value={nestedValue} index={0}>
-          Item One
+          <Quimicos_inventario />
         </CustomTabPanel>
         <CustomTabPanel value={nestedValue} index={1}>
-          Item Two
+          <Quimicos_entrada_salida />
         </CustomTabPanel>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        Item Three
+        <Inventario_pieles />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={3}>
-        Item Four
+        <Importaciones />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={4}>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <Tabs value={nestedValue} onChange={handleNestedChange} aria-label="formulas tabs" centered>
-            <Tab label="Ventas" {...a11yProps(0)} />
-            <Tab label="Maquilas" {...a11yProps(1)} />
-          </Tabs>
-        </Box>
-        <CustomTabPanel value={nestedValue} index={0}>
-          Item One
-        </CustomTabPanel>
-        <CustomTabPanel value={nestedValue} index={1}>
-          Item Two
-        </CustomTabPanel>
+        <Ventas />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={5}>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <Tabs value={nestedValue} onChange={handleNestedChange} aria-label="formulas tabs" centered>
-            <Tab label="Ventas" {...a11yProps(0)} />
-            <Tab label="Maquilas" {...a11yProps(1)} />
-          </Tabs>
-        </Box>
-        <CustomTabPanel value={nestedValue} index={0}>
-          Item One
-        </CustomTabPanel>
-        <CustomTabPanel value={nestedValue} index={1}>
-          Item Two
-        </CustomTabPanel>
+        Item One
       </CustomTabPanel>
     </Box>
   )

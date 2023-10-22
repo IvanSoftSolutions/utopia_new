@@ -7,7 +7,7 @@ import Select from '@mui/material/Select';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 
 
 export default function Formulas() {
@@ -132,6 +132,9 @@ export default function Formulas() {
                                 pageSize: 10,
                             },
                         },
+                    }}
+                    slots={{
+                        toolbar: GridToolbar,
                     }}
                 />
             </Box>
