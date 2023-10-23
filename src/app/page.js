@@ -15,7 +15,10 @@ import Quimicos_inventario from '../../pages/quimicos_tabs/quimicos_inventario';
 import Quimicos_entrada_salida from '../../pages/quimicos_tabs/quimicos_entrada_salida';
 import Inventario_pieles from '../../pages/pieles_inventario';
 import Importaciones from '../../pages/importaciones';
-import Ventas from '../../pages/ventas';
+import Ventas_ventas from '../../pages/ventas_tabs/ventas_ventas';
+import Ventas_conceptos from '../../pages/ventas_tabs/ventas_conceptos';
+import Maquilas_ventas from '../../pages/maquilas_tabs/maquilas_ventas';
+import Maquilas_conceptos from '../../pages/maquilas_tabs/maquilas_conceptos';
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -114,10 +117,32 @@ export default function Home() {
         <Importaciones />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={4}>
-        <Ventas />
+        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+          <Tabs value={nestedValue} onChange={handleNestedChange} aria-label="quimicos tabs" centered>
+            <Tab label="Ventas" {...a11yProps(0)} />
+            <Tab label="Conceptos" {...a11yProps(1)} />
+          </Tabs>
+        </Box>
+        <CustomTabPanel value={nestedValue} index={0}>
+          <Ventas_ventas />
+        </CustomTabPanel>
+        <CustomTabPanel value={nestedValue} index={1}>
+          <Ventas_conceptos />
+        </CustomTabPanel>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={5}>
-        Item One
+        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+          <Tabs value={nestedValue} onChange={handleNestedChange} aria-label="quimicos tabs" centered>
+            <Tab label="Ventas" {...a11yProps(0)} />
+            <Tab label="Conceptos" {...a11yProps(1)} />
+          </Tabs>
+        </Box>
+        <CustomTabPanel value={nestedValue} index={0}>
+          <Maquilas_ventas />
+        </CustomTabPanel>
+        <CustomTabPanel value={nestedValue} index={1}>
+          <Maquilas_conceptos />
+        </CustomTabPanel>
       </CustomTabPanel>
     </Box>
   )

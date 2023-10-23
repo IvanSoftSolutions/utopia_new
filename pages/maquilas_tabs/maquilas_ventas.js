@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react'
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
@@ -56,7 +56,7 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: "50%",
+    width: "35%",
     height: "85%",
     bgcolor: 'background.paper',
     border: '2px solid #000',
@@ -66,7 +66,7 @@ const style = {
     overflow: 'scroll'
 };
 
-function inventario_pieles() {
+function maquilas_ventas() {
     const [openNew, setOpenNew] = React.useState(false);
 
     const handleOpenNew = () => setOpenNew(true);
@@ -75,48 +75,31 @@ function inventario_pieles() {
     return (
         <div>
             <Box sx={{ display: "flex", justifyContent: "space-around" }} >
-                <Button variant="contained" sx={{ minWidth: "15em", marginTop: "2em", marginBottom: "2em" }} onClick={handleOpenNew} >nuevo Pallet</Button>
+                <Button variant="contained" sx={{ minWidth: "15em", marginTop: "2em", marginBottom: "2em" }} onClick={handleOpenNew} >Nueva Maquila</Button>
             </Box>
             <Modal
                 open={openNew}
                 onClose={handleCloseNew}
-                aria-labelledby="nuevo-pallet"
-                aria-describedby="modal-nuevo-pallet"
+                aria-labelledby="nueva-maquila"
+                aria-describedby="modal-nueva-maquila"
             >
                 <Box sx={style}>
-                    <h3>IFORMACION DE PALLET</h3>
+                    <h3>INFORMACION DE VENTA</h3>
                     <Box sx={{ display: "flex", justifyContent: "space-around" }}>
                         <Stack spacing={2}>
-                            <TextField sx={{ minWidth: "15em" }} id="Artículo" label="Artículo" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Color" label="Color" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Tipo" label="Tipo" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Kind" label="Kind" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Wholes Hide" label="Wholes Hide" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Sides" label="Sides" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Shrunken Shoulder" label="Shrunken Shoulder" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Double Butt" label="Double Butt" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Total" label="Total" variant="outlined" />
-                        </Stack>
-                        <Stack spacing={2}>
-                            <TextField sx={{ minWidth: "15em" }} id="Grado" label="Grado" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Ubicación" label="Ubicación" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Escurrir" label="Escurrir" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Locación" label="Locación" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Costo por Piel" label="Costo por Piel" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Piezas x Costo" label="Piezas x Costo" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Hongo" label="Hongo" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Afeitado" label="Afeitado" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Grosor" label="Grosor" variant="outlined" />
-                        </Stack>
-                        <Stack spacing={2}>
-                            <TextField sx={{ minWidth: "15em" }} id="Lavado" label="Lavado" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Rechazados" label="Rechazados" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Es el pallet de la bodega 1?" label="Es el pallet de la bodega 1?" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="UPO/Camión" label="UPO/Camión" variant="outlined" />
+                            <TextField sx={{ minWidth: "15em" }} id="Folio" label="Folio" variant="outlined" />
                             <TextField sx={{ minWidth: "15em" }} id="Fecha" label="Fecha" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Evaluador" label="Evaluador" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Modificaciones/Ventas" label="Modificaciones/Ventas" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Evaluado" label="Evaluado" variant="outlined" />
+                            <TextField sx={{ minWidth: "15em" }} id="Cliente" label="Cliente" variant="outlined" />
+                            <TextField sx={{ minWidth: "15em" }} id="Concepto" label="Concepto" variant="outlined" />
+                            <TextField sx={{ minWidth: "15em" }} id="Cantidad" label="Cantidad" variant="outlined" />
+                            <TextField sx={{ minWidth: "15em" }} id="Whole Hide/Sides" label="Whole Hide/Sides" variant="outlined" />
+                        </Stack>
+                        <Stack spacing={2}>
+                            <TextField sx={{ minWidth: "15em" }} id="Precio" label="Precio" variant="outlined" />
+                            <TextField sx={{ minWidth: "15em" }} id="Total" label="Total" variant="outlined" />
+                            <TextField sx={{ minWidth: "15em" }} id="Moneda" label="Moneda" variant="outlined" />
+                            <TextField sx={{ minWidth: "15em" }} id="Tasa de Cambio" label="Tasa de Cambio" variant="outlined" />
+                            <TextField sx={{ minWidth: "15em" }} id="Total USD" label="Total USD" variant="outlined" />
                         </Stack>
                     </Box>
                     <Box sx={{ marginTop: "2em" }}>
@@ -126,7 +109,6 @@ function inventario_pieles() {
                         <Button variant="contained" sx={{ maxWidth: "6.5em", marginTop: "2em", marginBottom: "2em" }} >Aceptar</Button>
                         <Button variant="contained" sx={{ maxWidth: "6.5em", marginTop: "2em", marginBottom: "2em" }} onClick={handleCloseNew} >Cancelar</Button>
                     </Box>
-
                 </Box>
             </Modal>
             <Box sx={{}} >
@@ -149,4 +131,4 @@ function inventario_pieles() {
     )
 }
 
-export default inventario_pieles
+export default maquilas_ventas

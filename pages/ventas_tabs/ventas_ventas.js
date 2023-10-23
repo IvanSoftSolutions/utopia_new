@@ -70,7 +70,7 @@ const style = {
     overflow: 'scroll'
 };
 
-function ventas() {
+function ventas_ventas() {
     const [openNew, setOpenNew] = React.useState(false);
     const [age, setAge] = React.useState('');
 
@@ -103,7 +103,6 @@ function ventas() {
                             <TextField sx={{ minWidth: "15em" }} id="Cantidad" label="Cantidad" variant="outlined" />
                             <TextField sx={{ minWidth: "15em" }} id="Precio" label="Precio" variant="outlined" />
                             <TextField sx={{ minWidth: "15em" }} id="Total MXN" label="Total MXN" variant="outlined" />
-
                         </Stack>
                         <Stack spacing={2}>
                             <TextField sx={{ minWidth: "15em" }} id="Tasa de Cambio" label="Tasa de Cambio" variant="outlined" />
@@ -215,4 +214,4 @@ function ventas() {
     )
 }
 
-export default ventas
+export default ventas_ventas
