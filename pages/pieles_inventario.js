@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
@@ -66,7 +66,7 @@ const style = {
     overflow: 'scroll'
 };
 
-function engrases() {
+function inventario_pieles() {
     const [openNew, setOpenNew] = React.useState(false);
 
     const handleOpenNew = () => setOpenNew(true);
@@ -75,7 +75,7 @@ function engrases() {
     return (
         <div>
             <Box sx={{ display: "flex", justifyContent: "space-around" }} >
-                <Button variant="contained" sx={{ minWidth: "15em", marginTop: "2em", marginBottom: "2em" }} onClick={handleOpenNew} >Nuevo Engrase</Button>
+                <Button variant="contained" sx={{ minWidth: "15em", marginTop: "2em", marginBottom: "2em" }} onClick={handleOpenNew} >nuevo Pallet</Button>
             </Box>
             <Modal
                 open={openNew}
@@ -84,48 +84,43 @@ function engrases() {
                 aria-describedby="modal-nueva-venta"
             >
                 <Box sx={style}>
-                    <h3>IFORMACION DE ENGRASE</h3>
+                    <h3>IFORMACION DE PALLET</h3>
                     <Box sx={{ display: "flex", justifyContent: "space-around" }}>
                         <Stack spacing={2}>
-                            <TextField sx={{ minWidth: "15em" }} id="Fecha" label="Fecha" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Numero Carga" label="Numero Carga" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Cuero" label="Cuero" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Camion/Partida" label="Camion/Partida" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Kilogramos" label="Kilogramos" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Piezas" label="Piezas" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Material" label="Material" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Calibre" label="Calibre" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Línea" label="Línea" variant="outlined" />
+                            <TextField sx={{ minWidth: "15em" }} id="Artículo" label="Artículo" variant="outlined" />
                             <TextField sx={{ minWidth: "15em" }} id="Color" label="Color" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Fecha Secado" label="Fecha Secado" variant="outlined" />
+                            <TextField sx={{ minWidth: "15em" }} id="Tipo" label="Tipo" variant="outlined" />
+                            <TextField sx={{ minWidth: "15em" }} id="Kind" label="Kind" variant="outlined" />
+                            <TextField sx={{ minWidth: "15em" }} id="Wholes Hide" label="Wholes Hide" variant="outlined" />
+                            <TextField sx={{ minWidth: "15em" }} id="Sides" label="Sides" variant="outlined" />
+                            <TextField sx={{ minWidth: "15em" }} id="Shrunken Shoulder" label="Shrunken Shoulder" variant="outlined" />
+                            <TextField sx={{ minWidth: "15em" }} id="Double Butt" label="Double Butt" variant="outlined" />
+                            <TextField sx={{ minWidth: "15em" }} id="Total" label="Total" variant="outlined" />
                         </Stack>
                         <Stack spacing={2}>
-                            <TextField sx={{ minWidth: "15em" }} id="Korona" label="Korona" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Engrase Seco" label="Engrase Seco" variant="outlined" />
+                            <TextField sx={{ minWidth: "15em" }} id="Grado" label="Grado" variant="outlined" />
+                            <TextField sx={{ minWidth: "15em" }} id="Ubicación" label="Ubicación" variant="outlined" />
                             <TextField sx={{ minWidth: "15em" }} id="Escurrir" label="Escurrir" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Desvenado" label="Desvenado" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Bauce" label="Bauce" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Vacío" label="Vacío" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="TAIC" label="TAIC" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Aéreo" label="Aéreo" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Toggling" label="Toggling" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Pulido" label="Pulido" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Abatanado" label="Abatanado" variant="outlined" />
-
+                            <TextField sx={{ minWidth: "15em" }} id="Locación" label="Locación" variant="outlined" />
+                            <TextField sx={{ minWidth: "15em" }} id="Costo por Piel" label="Costo por Piel" variant="outlined" />
+                            <TextField sx={{ minWidth: "15em" }} id="Piezas x Costo" label="Piezas x Costo" variant="outlined" />
+                            <TextField sx={{ minWidth: "15em" }} id="Hongo" label="Hongo" variant="outlined" />
+                            <TextField sx={{ minWidth: "15em" }} id="Afeitado" label="Afeitado" variant="outlined" />
+                            <TextField sx={{ minWidth: "15em" }} id="Grosor" label="Grosor" variant="outlined" />
                         </Stack>
                         <Stack spacing={2}>
-                            <TextField sx={{ minWidth: "15em" }} id="Ablandado" label="Ablandado" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Vacío 2" label="Vacío 2" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Pistolas" label="Pistolas" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Roller" label="Roller" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Finilux" label="Finilux" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Rotoprex" label="Rotoprex" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Partido" label="Partido" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Grabado" label="Grabado" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Envio Planta" label="Envio Planta" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Fecha Facturacion" label="Fecha Facturacion" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Numero Factura" label="Numero Factura" variant="outlined" />
+                            <TextField sx={{ minWidth: "15em" }} id="Lavado" label="Lavado" variant="outlined" />
+                            <TextField sx={{ minWidth: "15em" }} id="Rechazados" label="Rechazados" variant="outlined" />
+                            <TextField sx={{ minWidth: "15em" }} id="Es el pallet de la bodega 1?" label="Es el pallet de la bodega 1?" variant="outlined" />
+                            <TextField sx={{ minWidth: "15em" }} id="UPO/Camión" label="UPO/Camión" variant="outlined" />
+                            <TextField sx={{ minWidth: "15em" }} id="Fecha" label="Fecha" variant="outlined" />
+                            <TextField sx={{ minWidth: "15em" }} id="Evaluador" label="Evaluador" variant="outlined" />
+                            <TextField sx={{ minWidth: "15em" }} id="Modificaciones/Ventas" label="Modificaciones/Ventas" variant="outlined" />
+                            <TextField sx={{ minWidth: "15em" }} id="Evaluado" label="Evaluado" variant="outlined" />
                         </Stack>
+                    </Box>
+                    <Box sx={{ marginTop: "2em" }}>
+                        <TextField id="Observaciones" label="Observaciones" variant="outlined" fullWidth multiline />
                     </Box>
                     <Box sx={{ display: "flex", justifyContent: "space-around" }}>
                         <Button variant="contained" sx={{ maxWidth: "6.5em", marginTop: "2em", marginBottom: "2em" }} >Aceptar</Button>
@@ -154,4 +149,4 @@ function engrases() {
     )
 }
 
-export default engrases
+export default inventario_pieles

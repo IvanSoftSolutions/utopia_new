@@ -13,7 +13,7 @@ import Bitacora_reportes from '../../pages/formulas_tabs/bitacora_reportes';
 import Engrases from '../../pages/formulas_tabs/engrases';
 import Quimicos_inventario from '../../pages/quimicos_tabs/quimicos_inventario';
 import Quimicos_entrada_salida from '../../pages/quimicos_tabs/quimicos_entrada_salida';
-import Inventario_pieles from '../../pages/inventario_pieles';
+import Inventario_pieles from '../../pages/pieles_inventario';
 import Importaciones from '../../pages/importaciones';
 import Ventas from '../../pages/ventas';
 
