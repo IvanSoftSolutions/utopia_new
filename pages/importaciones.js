@@ -7,47 +7,234 @@ import TextField from '@mui/material/TextField';
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 
 const columns = [
-    { field: 'id', headerName: 'ID', width: 90 },
     {
-        field: 'firstName',
-        headerName: 'First name',
-        width: 150,
-        editable: true,
-    },
-    {
-        field: 'lastName',
-        headerName: 'Last name',
-        width: 150,
-        editable: true,
-    },
-    {
-        field: 'age',
-        headerName: 'Age',
+        field: 'factura',
+        headerName: 'Factura',
         type: 'number',
         width: 110,
-        editable: true,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
     },
     {
-        field: 'fullName',
-        headerName: 'Full name',
-        description: 'This column has a value getter and is not sortable.',
+        field: 'contrato',
+        headerName: 'Contrato',
+        type: 'number',
+        width: 110,
         sortable: false,
-        width: 160,
-        valueGetter: (params) =>
-            `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-    }
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'numero',
+        headerName: 'Número',
+        type: 'number',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'camion',
+        headerName: 'Camión',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'kind',
+        headerName: 'Kind',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'pallets',
+        headerName: 'Pallets',
+        type: 'number',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'valorUSD',
+        headerName: 'Valor USD',
+        type: 'number',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'hides',
+        headerName: 'Hides',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'peso',
+        headerName: 'Peso',
+        type: 'number',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'eta',
+        headerName: 'ETA',
+        type: 'date',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'truck',
+        headerName: 'Truck',
+        type: 'number',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'insurance',
+        headerName: 'Insurance',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'maquila',
+        headerName: 'Maquila',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'partida',
+        headerName: 'Partida',
+        type: 'date',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'entrada',
+        headerName: 'Entrada',
+        type: 'date',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'split',
+        headerName: 'Split',
+        type: 'number',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'final',
+        headerName: 'Final',
+        type: 'number',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'remojo',
+        headerName: 'Remojo',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'dividido',
+        headerName: 'Dividido',
+        type: 'boolean',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'entrega',
+        headerName: 'Entrega',
+        type: 'date',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'tipo',
+        headerName: 'Tipo',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'observaciones',
+        headerName: 'Observaciones',
+        width: 500,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'costoProceso',
+        headerName: 'Costo Proceso',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'facturaPagada',
+        headerName: 'Factura Pagada',
+        type: 'boolean',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'numeroFactura',
+        headerName: 'Número Factura',
+        type: 'number',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
 ];
 
 const rows = [
-    { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-    { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-    { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-    { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-    { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-    { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-    { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-    { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-    { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+    { id: 1, factura: 69, contrato: 4, numero: 8, camion: 10, kind: 'vaca', pallets: 20, valorUSD: 4000, hides: 45, peso: 46, eta: null, truck: 47, insurance: 'popeye', maquila: 'sky', partida: null, split: 32, final: 25, remojo: false, dividido: true, entrega: null, tipo: 'venao', observaciones: 'adasdasdasd', costoProceso: 80, facturaPagada: false, numeroFactura: 123 },
+    { id: 2, factura: 69, contrato: 4, numero: 8, camion: 10, kind: 'vaca', pallets: 20, valorUSD: 4000, hides: 45, peso: 46, eta: null, truck: 47, insurance: 'popeye', maquila: 'sky', partida: null, split: 32, final: 25, remojo: false, dividido: true, entrega: null, tipo: 'venao', observaciones: 'adasdasdasd', costoProceso: 80, facturaPagada: false, numeroFactura: 123 },
+    { id: 3, factura: 69, contrato: 4, numero: 8, camion: 10, kind: 'vaca', pallets: 20, valorUSD: 4000, hides: 45, peso: 46, eta: null, truck: 47, insurance: 'popeye', maquila: 'sky', partida: null, split: 32, final: 25, remojo: false, dividido: true, entrega: null, tipo: 'venao', observaciones: 'adasdasdasd', costoProceso: 80, facturaPagada: false, numeroFactura: 123 },
+    { id: 4, factura: 69, contrato: 4, numero: 8, camion: 10, kind: 'vaca', pallets: 20, valorUSD: 4000, hides: 45, peso: 46, eta: null, truck: 47, insurance: 'popeye', maquila: 'sky', partida: null, split: 32, final: 25, remojo: false, dividido: true, entrega: null, tipo: 'venao', observaciones: 'adasdasdasd', costoProceso: 80, facturaPagada: false, numeroFactura: 123 },
+    { id: 5, factura: 69, contrato: 4, numero: 8, camion: 10, kind: 'vaca', pallets: 20, valorUSD: 4000, hides: 45, peso: 46, eta: null, truck: 47, insurance: 'popeye', maquila: 'sky', partida: null, split: 32, final: 25, remojo: false, dividido: true, entrega: null, tipo: 'venao', observaciones: 'adasdasdasd', costoProceso: 80, facturaPagada: false, numeroFactura: 123 },
+    { id: 6, factura: 69, contrato: 4, numero: 8, camion: 10, kind: 'vaca', pallets: 20, valorUSD: 4000, hides: 45, peso: 46, eta: null, truck: 47, insurance: 'popeye', maquila: 'sky', partida: null, split: 32, final: 25, remojo: false, dividido: true, entrega: null, tipo: 'venao', observaciones: 'adasdasdasd', costoProceso: 80, facturaPagada: false, numeroFactura: 123 },
+    { id: 7, factura: 69, contrato: 4, numero: 8, camion: 10, kind: 'vaca', pallets: 20, valorUSD: 4000, hides: 45, peso: 46, eta: null, truck: 47, insurance: 'popeye', maquila: 'sky', partida: null, split: 32, final: 25, remojo: false, dividido: true, entrega: null, tipo: 'venao', observaciones: 'adasdasdasd', costoProceso: 80, facturaPagada: false, numeroFactura: 123 },
+    { id: 8, factura: 69, contrato: 4, numero: 8, camion: 10, kind: 'vaca', pallets: 20, valorUSD: 4000, hides: 45, peso: 46, eta: null, truck: 47, insurance: 'popeye', maquila: 'sky', partida: null, split: 32, final: 25, remojo: false, dividido: true, entrega: null, tipo: 'venao', observaciones: 'adasdasdasd', costoProceso: 80, facturaPagada: false, numeroFactura: 123 },
+    { id: 9, factura: 69, contrato: 4, numero: 8, camion: 10, kind: 'vaca', pallets: 20, valorUSD: 4000, hides: 45, peso: 46, eta: null, truck: 47, insurance: 'popeye', maquila: 'sky', partida: null, split: 32, final: 25, remojo: false, dividido: true, entrega: null, tipo: 'venao', observaciones: 'adasdasdasd', costoProceso: 80, facturaPagada: false, numeroFactura: 123 },
 
 ];
 
@@ -76,6 +263,26 @@ function importaciones() {
         <div>
             <Box sx={{ display: "flex", justifyContent: "space-around" }} >
                 <Button variant="contained" sx={{ minWidth: "15em", marginTop: "2em", marginBottom: "2em" }} onClick={handleOpenNew} >Nueva Importacion</Button>
+            </Box>
+            <Box sx={{}} >
+                <DataGrid
+                    rows={rows}
+                    columns={columns}
+                    getRowHeight={() => 'auto'}
+                    initialState={{
+                        pagination: {
+                            paginationModel: {
+                                pageSize: 100,
+                            },
+                        },
+                    }}
+                    slots={{
+                        toolbar: GridToolbar,
+                    }}
+                    disableColumnFilter
+                    disableColumnMenu
+                    disableRowSelectionOnClick
+                />
             </Box>
             <Modal
                 open={openNew}
@@ -126,22 +333,6 @@ function importaciones() {
                     </Box>
                 </Box>
             </Modal>
-            <Box sx={{}} >
-                <DataGrid
-                    rows={rows}
-                    columns={columns}
-                    initialState={{
-                        pagination: {
-                            paginationModel: {
-                                pageSize: 100,
-                            },
-                        },
-                    }}
-                    slots={{
-                        toolbar: GridToolbar,
-                    }}
-                />
-            </Box>
         </div>
     )
 }
