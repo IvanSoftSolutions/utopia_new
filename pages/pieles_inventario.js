@@ -26,8 +26,8 @@ const columns = [
         align: 'center',
     },
     {
-        field: 'upoTruck',
-        headerName: 'UPO/Truck',
+        field: 'upoCamion',
+        headerName: 'UPO/Camión',
         width: 110,
         sortable: false,
         headerAlign: 'center',
@@ -139,7 +139,7 @@ const columns = [
         field: 'costoPorPiel',
         headerName: 'Costo Por Piel',
         type: 'number',
-        width: 110,
+        width: 120,
         sortable: false,
         headerAlign: 'center',
         align: 'center',
@@ -148,7 +148,7 @@ const columns = [
         field: 'piezasPorCosto',
         headerName: 'Piezas x Costo',
         type: 'number',
-        width: 110,
+        width: 120,
         sortable: false,
         headerAlign: 'center',
         align: 'center',
@@ -173,15 +173,15 @@ const columns = [
 ];
 
 const rows = [
-    { id: 1, pallet: 1, upoTruck: 2, articulo: 'asdasd', color: 'negro', tipo: 'vaca', kind: 'bebe', wholesHide: 14, sides: 15, shrunkenShoulder: 16, doubleButt: 17, total: 69, grado: 4, ubicacion: 'rack 1', locacion: 'bodega 2', costoPorPiel: null, piezasPorCosto: null, fecha: null, observaciones: 'adsasdasfasd' },
-    { id: 2, pallet: 1, upoTruck: 2, articulo: 'asdasd', color: 'negro', tipo: 'vaca', kind: 'bebe', wholesHide: 14, sides: 15, shrunkenShoulder: 16, doubleButt: 17, total: 69, grado: 4, ubicacion: 'rack 1', locacion: 'bodega 2', costoPorPiel: null, piezasPorCosto: null, fecha: null, observaciones: 'adsasdasfasd' },
-    { id: 3, pallet: 1, upoTruck: 2, articulo: 'asdasd', color: 'negro', tipo: 'vaca', kind: 'bebe', wholesHide: 14, sides: 15, shrunkenShoulder: 16, doubleButt: 17, total: 69, grado: 4, ubicacion: 'rack 1', locacion: 'bodega 2', costoPorPiel: null, piezasPorCosto: null, fecha: null, observaciones: 'adsasdasfasd' },
-    { id: 4, pallet: 1, upoTruck: 2, articulo: 'asdasd', color: 'negro', tipo: 'vaca', kind: 'bebe', wholesHide: 14, sides: 15, shrunkenShoulder: 16, doubleButt: 17, total: 69, grado: 4, ubicacion: 'rack 1', locacion: 'bodega 2', costoPorPiel: null, piezasPorCosto: null, fecha: null, observaciones: 'adsasdasfasd' },
-    { id: 5, pallet: 1, upoTruck: 2, articulo: 'asdasd', color: 'negro', tipo: 'vaca', kind: 'bebe', wholesHide: 14, sides: 15, shrunkenShoulder: 16, doubleButt: 17, total: 69, grado: 4, ubicacion: 'rack 1', locacion: 'bodega 2', costoPorPiel: null, piezasPorCosto: null, fecha: null, observaciones: 'adsasdasfasd' },
-    { id: 6, pallet: 1, upoTruck: 2, articulo: 'asdasd', color: 'negro', tipo: 'vaca', kind: 'bebe', wholesHide: 14, sides: 15, shrunkenShoulder: 16, doubleButt: 17, total: 69, grado: 4, ubicacion: 'rack 1', locacion: 'bodega 2', costoPorPiel: null, piezasPorCosto: null, fecha: null, observaciones: 'adsasdasfasd' },
-    { id: 7, pallet: 1, upoTruck: 2, articulo: 'asdasd', color: 'negro', tipo: 'vaca', kind: 'bebe', wholesHide: 14, sides: 15, shrunkenShoulder: 16, doubleButt: 17, total: 69, grado: 4, ubicacion: 'rack 1', locacion: 'bodega 2', costoPorPiel: null, piezasPorCosto: null, fecha: null, observaciones: 'adsasdasfasd' },
-    { id: 8, pallet: 1, upoTruck: 2, articulo: 'asdasd', color: 'negro', tipo: 'vaca', kind: 'bebe', wholesHide: 14, sides: 15, shrunkenShoulder: 16, doubleButt: 17, total: 69, grado: 4, ubicacion: 'rack 1', locacion: 'bodega 2', costoPorPiel: null, piezasPorCosto: null, fecha: null, observaciones: 'adsasdasfasd' },
-    { id: 9, pallet: 1, upoTruck: 2, articulo: 'asdasd', color: 'negro', tipo: 'vaca', kind: 'bebe', wholesHide: 14, sides: 15, shrunkenShoulder: 16, doubleButt: 17, total: 69, grado: 4, ubicacion: 'rack 1', locacion: 'bodega 2', costoPorPiel: null, piezasPorCosto: null, fecha: null, observaciones: 'adsasdasfasd' },
+    { id: 1, pallet: 1, upoCamion: 2, articulo: 'asdasd', color: 'negro', tipo: 'vaca', kind: 'bebe', wholesHide: 14, sides: 15, shrunkenShoulder: 16, doubleButt: 17, total: 69, grado: 4, ubicacion: 'rack 1', locacion: 'bodega 2', costoPorPiel: null, piezasPorCosto: null, fecha: null, observaciones: 'adsasdasfasd' },
+    { id: 2, pallet: 1, upoCamion: 2, articulo: 'asdasd', color: 'negro', tipo: 'vaca', kind: 'bebe', wholesHide: 14, sides: 15, shrunkenShoulder: 16, doubleButt: 17, total: 69, grado: 4, ubicacion: 'rack 1', locacion: 'bodega 2', costoPorPiel: null, piezasPorCosto: null, fecha: null, observaciones: 'adsasdasfasd' },
+    { id: 3, pallet: 1, upoCamion: 2, articulo: 'asdasd', color: 'negro', tipo: 'vaca', kind: 'bebe', wholesHide: 14, sides: 15, shrunkenShoulder: 16, doubleButt: 17, total: 69, grado: 4, ubicacion: 'rack 1', locacion: 'bodega 2', costoPorPiel: null, piezasPorCosto: null, fecha: null, observaciones: 'adsasdasfasd' },
+    { id: 4, pallet: 1, upoCamion: 2, articulo: 'asdasd', color: 'negro', tipo: 'vaca', kind: 'bebe', wholesHide: 14, sides: 15, shrunkenShoulder: 16, doubleButt: 17, total: 69, grado: 4, ubicacion: 'rack 1', locacion: 'bodega 2', costoPorPiel: null, piezasPorCosto: null, fecha: null, observaciones: 'adsasdasfasd' },
+    { id: 5, pallet: 1, upoCamion: 2, articulo: 'asdasd', color: 'negro', tipo: 'vaca', kind: 'bebe', wholesHide: 14, sides: 15, shrunkenShoulder: 16, doubleButt: 17, total: 69, grado: 4, ubicacion: 'rack 1', locacion: 'bodega 2', costoPorPiel: null, piezasPorCosto: null, fecha: null, observaciones: 'adsasdasfasd' },
+    { id: 6, pallet: 1, upoCamion: 2, articulo: 'asdasd', color: 'negro', tipo: 'vaca', kind: 'bebe', wholesHide: 14, sides: 15, shrunkenShoulder: 16, doubleButt: 17, total: 69, grado: 4, ubicacion: 'rack 1', locacion: 'bodega 2', costoPorPiel: null, piezasPorCosto: null, fecha: null, observaciones: 'adsasdasfasd' },
+    { id: 7, pallet: 1, upoCamion: 2, articulo: 'asdasd', color: 'negro', tipo: 'vaca', kind: 'bebe', wholesHide: 14, sides: 15, shrunkenShoulder: 16, doubleButt: 17, total: 69, grado: 4, ubicacion: 'rack 1', locacion: 'bodega 2', costoPorPiel: null, piezasPorCosto: null, fecha: null, observaciones: 'adsasdasfasd' },
+    { id: 8, pallet: 1, upoCamion: 2, articulo: 'asdasd', color: 'negro', tipo: 'vaca', kind: 'bebe', wholesHide: 14, sides: 15, shrunkenShoulder: 16, doubleButt: 17, total: 69, grado: 4, ubicacion: 'rack 1', locacion: 'bodega 2', costoPorPiel: null, piezasPorCosto: null, fecha: null, observaciones: 'adsasdasfasd' },
+    { id: 9, pallet: 1, upoCamion: 2, articulo: 'asdasd', color: 'negro', tipo: 'vaca', kind: 'bebe', wholesHide: 14, sides: 15, shrunkenShoulder: 16, doubleButt: 17, total: 69, grado: 4, ubicacion: 'rack 1', locacion: 'bodega 2', costoPorPiel: null, piezasPorCosto: null, fecha: null, observaciones: 'adsasdasfasd' },
 
 ];
 
@@ -190,7 +190,7 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: "50%",
+    width: "35%",
     height: "85%",
     bgcolor: 'background.paper',
     border: '2px solid #000',
@@ -239,7 +239,7 @@ function inventario_pieles() {
             >
                 <Box sx={style}>
                     <h3>IFORMACION DE PALLET</h3>
-                    <Box sx={{ display: "flex", justifyContent: "space-around" }}>
+                    <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
                         <Stack spacing={2}>
                             <TextField sx={{ minWidth: "15em" }} id="Artículo" label="Artículo" variant="outlined" />
                             <TextField sx={{ minWidth: "15em" }} id="Color" label="Color" variant="outlined" />
@@ -249,28 +249,16 @@ function inventario_pieles() {
                             <TextField sx={{ minWidth: "15em" }} id="Sides" label="Sides" variant="outlined" />
                             <TextField sx={{ minWidth: "15em" }} id="Shrunken Shoulder" label="Shrunken Shoulder" variant="outlined" />
                             <TextField sx={{ minWidth: "15em" }} id="Double Butt" label="Double Butt" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Total" label="Total" variant="outlined" />
                         </Stack>
                         <Stack spacing={2}>
+                            <TextField sx={{ minWidth: "15em" }} id="Total" label="Total" variant="outlined" />
                             <TextField sx={{ minWidth: "15em" }} id="Grado" label="Grado" variant="outlined" />
                             <TextField sx={{ minWidth: "15em" }} id="Ubicación" label="Ubicación" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Escurrir" label="Escurrir" variant="outlined" />
                             <TextField sx={{ minWidth: "15em" }} id="Locación" label="Locación" variant="outlined" />
                             <TextField sx={{ minWidth: "15em" }} id="Costo por Piel" label="Costo por Piel" variant="outlined" />
                             <TextField sx={{ minWidth: "15em" }} id="Piezas x Costo" label="Piezas x Costo" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Hongo" label="Hongo" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Afeitado" label="Afeitado" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Grosor" label="Grosor" variant="outlined" />
-                        </Stack>
-                        <Stack spacing={2}>
-                            <TextField sx={{ minWidth: "15em" }} id="Lavado" label="Lavado" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Rechazados" label="Rechazados" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Es el pallet de la bodega 1?" label="Es el pallet de la bodega 1?" variant="outlined" />
                             <TextField sx={{ minWidth: "15em" }} id="UPO/Camión" label="UPO/Camión" variant="outlined" />
                             <TextField sx={{ minWidth: "15em" }} id="Fecha" label="Fecha" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Evaluador" label="Evaluador" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Modificaciones/Ventas" label="Modificaciones/Ventas" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Evaluado" label="Evaluado" variant="outlined" />
                         </Stack>
                     </Box>
                     <Box sx={{ marginTop: "2em" }}>

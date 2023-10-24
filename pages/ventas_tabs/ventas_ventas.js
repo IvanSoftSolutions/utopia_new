@@ -11,47 +11,146 @@ import TextField from '@mui/material/TextField';
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 
 const columns = [
-    { field: 'id', headerName: 'ID', width: 90 },
     {
-        field: 'firstName',
-        headerName: 'First name',
-        width: 150,
-        editable: true,
-    },
-    {
-        field: 'lastName',
-        headerName: 'Last name',
-        width: 150,
-        editable: true,
-    },
-    {
-        field: 'age',
-        headerName: 'Age',
+        field: 'folio',
+        headerName: 'Folio',
         type: 'number',
         width: 110,
-        editable: true,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
     },
     {
-        field: 'fullName',
-        headerName: 'Full name',
-        description: 'This column has a value getter and is not sortable.',
+        field: 'fecha',
+        headerName: 'Fecha',
+        type: 'date',
+        width: 110,
         sortable: false,
-        width: 160,
-        valueGetter: (params) =>
-            `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-    }
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'cliente',
+        headerName: 'Cliente',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'concepto',
+        headerName: 'Concepto',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'inventario',
+        headerName: 'Inventario',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'piezas',
+        headerName: 'Piezas',
+        type: 'number',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'unidad',
+        headerName: 'Unidad',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'cantidad',
+        headerName: 'Cantidad',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'seleccion',
+        headerName: 'Selección',
+        type: 'number',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'tipo',
+        headerName: 'Tipo',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'precio',
+        headerName: 'Precio',
+        type: 'number',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'totalPesos',
+        headerName: 'Total Pesos',
+        type: 'number',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'totalUSD',
+        headerName: 'Total USD',
+        type: 'number',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'tasaDeCambio',
+        headerName: 'Tasa De Cambio',
+        type: 'number',
+        width: 130,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'observaciones',
+        headerName: 'Observaciones',
+        width: 500,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
 ];
 
 const rows = [
-    { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-    { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-    { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-    { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-    { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-    { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-    { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-    { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-    { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+    { id: 1, folio: 69, fecha: null, cliente: 'El flaco', concepto: 'cosas voli', inventario: null, piezas: 20, unidad: 'kilogramos', cantidad: 45, seleccion: 'premium', tipo: 'vape', precio: 47, totalPesos: 48, tasaDeCambio: 50, totalUSD: 98, observaciones: 'adsasdasdas' },
+    { id: 2, folio: 69, fecha: null, cliente: 'El flaco', concepto: 'cosas voli', inventario: null, piezas: 20, unidad: 'kilogramos', cantidad: 45, seleccion: 'premium', tipo: 'vape', precio: 47, totalPesos: 48, tasaDeCambio: 50, totalUSD: 98, observaciones: 'adsasdasdas' },
+    { id: 3, folio: 69, fecha: null, cliente: 'El flaco', concepto: 'cosas voli', inventario: null, piezas: 20, unidad: 'kilogramos', cantidad: 45, seleccion: 'premium', tipo: 'vape', precio: 47, totalPesos: 48, tasaDeCambio: 50, totalUSD: 98, observaciones: 'adsasdasdas' },
+    { id: 4, folio: 69, fecha: null, cliente: 'El flaco', concepto: 'cosas voli', inventario: null, piezas: 20, unidad: 'kilogramos', cantidad: 45, seleccion: 'premium', tipo: 'vape', precio: 47, totalPesos: 48, tasaDeCambio: 50, totalUSD: 98, observaciones: 'adsasdasdas' },
+    { id: 5, folio: 69, fecha: null, cliente: 'El flaco', concepto: 'cosas voli', inventario: null, piezas: 20, unidad: 'kilogramos', cantidad: 45, seleccion: 'premium', tipo: 'vape', precio: 47, totalPesos: 48, tasaDeCambio: 50, totalUSD: 98, observaciones: 'adsasdasdas' },
+    { id: 6, folio: 69, fecha: null, cliente: 'El flaco', concepto: 'cosas voli', inventario: null, piezas: 20, unidad: 'kilogramos', cantidad: 45, seleccion: 'premium', tipo: 'vape', precio: 47, totalPesos: 48, tasaDeCambio: 50, totalUSD: 98, observaciones: 'adsasdasdas' },
+    { id: 7, folio: 69, fecha: null, cliente: 'El flaco', concepto: 'cosas voli', inventario: null, piezas: 20, unidad: 'kilogramos', cantidad: 45, seleccion: 'premium', tipo: 'vape', precio: 47, totalPesos: 48, tasaDeCambio: 50, totalUSD: 98, observaciones: 'adsasdasdas' },
+    { id: 8, folio: 69, fecha: null, cliente: 'El flaco', concepto: 'cosas voli', inventario: null, piezas: 20, unidad: 'kilogramos', cantidad: 45, seleccion: 'premium', tipo: 'vape', precio: 47, totalPesos: 48, tasaDeCambio: 50, totalUSD: 98, observaciones: 'adsasdasdas' },
+    { id: 9, folio: 69, fecha: null, cliente: 'El flaco', concepto: 'cosas voli', inventario: null, piezas: 20, unidad: 'kilogramos', cantidad: 45, seleccion: 'premium', tipo: 'vape', precio: 47, totalPesos: 48, tasaDeCambio: 50, totalUSD: 98, observaciones: 'adsasdasdas' },
 
 ];
 
@@ -198,6 +297,7 @@ function ventas_ventas() {
                 <DataGrid
                     rows={rows}
                     columns={columns}
+                    getRowHeight={() => 'auto'}
                     initialState={{
                         pagination: {
                             paginationModel: {
@@ -208,6 +308,9 @@ function ventas_ventas() {
                     slots={{
                         toolbar: GridToolbar,
                     }}
+                    disableColumnFilter
+                    disableColumnMenu
+                    disableRowSelectionOnClick
                 />
             </Box>
         </div>
