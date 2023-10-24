@@ -7,47 +7,181 @@ import TextField from '@mui/material/TextField';
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 
 const columns = [
-    { field: 'id', headerName: 'ID', width: 90 },
     {
-        field: 'firstName',
-        headerName: 'First name',
-        width: 150,
-        editable: true,
-    },
-    {
-        field: 'lastName',
-        headerName: 'Last name',
-        width: 150,
-        editable: true,
-    },
-    {
-        field: 'age',
-        headerName: 'Age',
+        field: 'id',
+        headerName: 'ID',
         type: 'number',
         width: 110,
-        editable: true,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
     },
     {
-        field: 'fullName',
-        headerName: 'Full name',
-        description: 'This column has a value getter and is not sortable.',
+        field: 'pallet',
+        headerName: 'Pallet',
+        type: 'number',
+        width: 110,
         sortable: false,
-        width: 160,
-        valueGetter: (params) =>
-            `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-    }
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'upoTruck',
+        headerName: 'UPO/Truck',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'articulo',
+        headerName: 'Artículo',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'color',
+        headerName: 'Color',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'tipo',
+        headerName: 'Tipo',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'kind',
+        headerName: 'Kind',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'wholesHide',
+        headerName: 'Wholes Hide',
+        type: 'number',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'sides',
+        headerName: 'Sides',
+        type: 'number',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'shrunkenShoulder',
+        headerName: 'Shrunken Shoulder',
+        type: 'number',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'doubleButt',
+        headerName: 'Double Butt',
+        type: 'number',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'total',
+        headerName: 'Total',
+        type: 'number',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'grado',
+        headerName: 'Grado',
+        type: 'number',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'ubicacion',
+        headerName: 'Ubicación',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'locacion',
+        headerName: 'Locación',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'costoPorPiel',
+        headerName: 'Costo Por Piel',
+        type: 'number',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'piezasPorCosto',
+        headerName: 'Piezas x Costo',
+        type: 'number',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'fecha',
+        headerName: 'Fecha',
+        type: 'date',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'observaciones',
+        headerName: 'Observaciones',
+        width: 500,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
 ];
 
 const rows = [
-    { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-    { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-    { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-    { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-    { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-    { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-    { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-    { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-    { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+    { id: 1, pallet: 1, upoTruck: 2, articulo: 'asdasd', color: 'negro', tipo: 'vaca', kind: 'bebe', wholesHide: 14, sides: 15, shrunkenShoulder: 16, doubleButt: 17, total: 69, grado: 4, ubicacion: 'rack 1', locacion: 'bodega 2', costoPorPiel: null, piezasPorCosto: null, fecha: null, observaciones: 'adsasdasfasd' },
+    { id: 2, pallet: 1, upoTruck: 2, articulo: 'asdasd', color: 'negro', tipo: 'vaca', kind: 'bebe', wholesHide: 14, sides: 15, shrunkenShoulder: 16, doubleButt: 17, total: 69, grado: 4, ubicacion: 'rack 1', locacion: 'bodega 2', costoPorPiel: null, piezasPorCosto: null, fecha: null, observaciones: 'adsasdasfasd' },
+    { id: 3, pallet: 1, upoTruck: 2, articulo: 'asdasd', color: 'negro', tipo: 'vaca', kind: 'bebe', wholesHide: 14, sides: 15, shrunkenShoulder: 16, doubleButt: 17, total: 69, grado: 4, ubicacion: 'rack 1', locacion: 'bodega 2', costoPorPiel: null, piezasPorCosto: null, fecha: null, observaciones: 'adsasdasfasd' },
+    { id: 4, pallet: 1, upoTruck: 2, articulo: 'asdasd', color: 'negro', tipo: 'vaca', kind: 'bebe', wholesHide: 14, sides: 15, shrunkenShoulder: 16, doubleButt: 17, total: 69, grado: 4, ubicacion: 'rack 1', locacion: 'bodega 2', costoPorPiel: null, piezasPorCosto: null, fecha: null, observaciones: 'adsasdasfasd' },
+    { id: 5, pallet: 1, upoTruck: 2, articulo: 'asdasd', color: 'negro', tipo: 'vaca', kind: 'bebe', wholesHide: 14, sides: 15, shrunkenShoulder: 16, doubleButt: 17, total: 69, grado: 4, ubicacion: 'rack 1', locacion: 'bodega 2', costoPorPiel: null, piezasPorCosto: null, fecha: null, observaciones: 'adsasdasfasd' },
+    { id: 6, pallet: 1, upoTruck: 2, articulo: 'asdasd', color: 'negro', tipo: 'vaca', kind: 'bebe', wholesHide: 14, sides: 15, shrunkenShoulder: 16, doubleButt: 17, total: 69, grado: 4, ubicacion: 'rack 1', locacion: 'bodega 2', costoPorPiel: null, piezasPorCosto: null, fecha: null, observaciones: 'adsasdasfasd' },
+    { id: 7, pallet: 1, upoTruck: 2, articulo: 'asdasd', color: 'negro', tipo: 'vaca', kind: 'bebe', wholesHide: 14, sides: 15, shrunkenShoulder: 16, doubleButt: 17, total: 69, grado: 4, ubicacion: 'rack 1', locacion: 'bodega 2', costoPorPiel: null, piezasPorCosto: null, fecha: null, observaciones: 'adsasdasfasd' },
+    { id: 8, pallet: 1, upoTruck: 2, articulo: 'asdasd', color: 'negro', tipo: 'vaca', kind: 'bebe', wholesHide: 14, sides: 15, shrunkenShoulder: 16, doubleButt: 17, total: 69, grado: 4, ubicacion: 'rack 1', locacion: 'bodega 2', costoPorPiel: null, piezasPorCosto: null, fecha: null, observaciones: 'adsasdasfasd' },
+    { id: 9, pallet: 1, upoTruck: 2, articulo: 'asdasd', color: 'negro', tipo: 'vaca', kind: 'bebe', wholesHide: 14, sides: 15, shrunkenShoulder: 16, doubleButt: 17, total: 69, grado: 4, ubicacion: 'rack 1', locacion: 'bodega 2', costoPorPiel: null, piezasPorCosto: null, fecha: null, observaciones: 'adsasdasfasd' },
 
 ];
 
@@ -76,6 +210,26 @@ function inventario_pieles() {
         <div>
             <Box sx={{ display: "flex", justifyContent: "space-around" }} >
                 <Button variant="contained" sx={{ minWidth: "15em", marginTop: "2em", marginBottom: "2em" }} onClick={handleOpenNew} >nuevo Pallet</Button>
+            </Box>
+            <Box sx={{}} >
+                <DataGrid
+                    rows={rows}
+                    columns={columns}
+                    getRowHeight={() => 'auto'}
+                    initialState={{
+                        pagination: {
+                            paginationModel: {
+                                pageSize: 10,
+                            },
+                        },
+                    }}
+                    slots={{
+                        toolbar: GridToolbar,
+                    }}
+                    disableColumnFilter
+                    disableColumnMenu
+                    disableRowSelectionOnClick
+                />
             </Box>
             <Modal
                 open={openNew}
@@ -129,22 +283,6 @@ function inventario_pieles() {
 
                 </Box>
             </Modal>
-            <Box sx={{}} >
-                <DataGrid
-                    rows={rows}
-                    columns={columns}
-                    initialState={{
-                        pagination: {
-                            paginationModel: {
-                                pageSize: 100,
-                            },
-                        },
-                    }}
-                    slots={{
-                        toolbar: GridToolbar,
-                    }}
-                />
-            </Box>
         </div>
     )
 }

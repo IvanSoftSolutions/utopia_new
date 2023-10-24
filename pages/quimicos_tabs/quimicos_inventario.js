@@ -107,15 +107,15 @@ const columns = [
 ];
 
 const rows = [
-    { id: 1, nombre: 'quimico', productir: 'Snow', presentacion: 'Jon', cantidad: 35, peso: 100, kg: 5, precio: 14, divisa: 'USD' },
-    { id: 2, nombre: 'quimico', productir: 'Lannister', presentacion: 'Cersei', cantidad: 42, peso: 100, kg: 5, precio: 14, divisa: 'USD' },
-    { id: 3, nombre: 'quimico', productir: 'Lannister', presentacion: 'Jaime', cantidad: 45, peso: 100, kg: 5, precio: 14, divisa: 'USD' },
-    { id: 4, nombre: 'quimico', productir: 'Stark', presentacion: 'Arya', cantidad: 16, peso: 100, kg: 5, precio: 14, divisa: 'USD' },
-    { id: 5, nombre: 'quimico', productir: 'Targaryen', presentacion: 'Daenerys', cantidad: null, peso: 100, kg: 5, precio: 14, divisa: 'USD' },
-    { id: 6, nombre: 'quimico', productir: 'Melisandre', presentacion: null, cantidad: 150, peso: 100, kg: 5, precio: 14, divisa: 'USD' },
-    { id: 7, nombre: 'quimico', productir: 'Clifford', presentacion: 'Ferrara', cantidad: 44, peso: 100, kg: 5, precio: 14, divisa: 'USD' },
-    { id: 8, nombre: 'quimico', productir: 'Frances', presentacion: 'Rossini', cantidad: 36, peso: 100, kg: 5, precio: 14, divisa: 'USD' },
-    { id: 9, nombre: 'quimico', productir: 'Roxie', presentacion: 'Harvey', cantidad: 65, peso: 100, kg: 5, precio: 14, divisa: 'USD' },
+    { id: 1, nombre: 'quimico', productor: 'Snow', presentacion: 'Jon', cantidad: 35, peso: 100, kg: 5, precio: 14, divisa: 'USD' },
+    { id: 2, nombre: 'quimico', productor: 'Lannister', presentacion: 'Cersei', cantidad: 42, peso: 100, kg: 5, precio: 14, divisa: 'USD' },
+    { id: 3, nombre: 'quimico', productor: 'Lannister', presentacion: 'Jaime', cantidad: 45, peso: 100, kg: 5, precio: 14, divisa: 'USD' },
+    { id: 4, nombre: 'quimico', productor: 'Stark', presentacion: 'Arya', cantidad: 16, peso: 100, kg: 5, precio: 14, divisa: 'USD' },
+    { id: 5, nombre: 'quimico', productor: 'Targaryen', presentacion: 'Daenerys', cantidad: null, peso: 100, kg: 5, precio: 14, divisa: 'USD' },
+    { id: 6, nombre: 'quimico', productor: 'Melisandre', presentacion: null, cantidad: 150, peso: 100, kg: 5, precio: 14, divisa: 'USD' },
+    { id: 7, nombre: 'quimico', productor: 'Clifford', presentacion: 'Ferrara', cantidad: 44, peso: 100, kg: 5, precio: 14, divisa: 'USD' },
+    { id: 8, nombre: 'quimico', productor: 'Frances', presentacion: 'Rossini', cantidad: 36, peso: 100, kg: 5, precio: 14, divisa: 'USD' },
+    { id: 9, nombre: 'quimico', productor: 'Roxie', presentacion: 'Harvey', cantidad: 65, peso: 100, kg: 5, precio: 14, divisa: 'USD' },
 
 ];
 
