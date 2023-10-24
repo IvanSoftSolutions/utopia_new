@@ -11,47 +11,111 @@ import TextField from '@mui/material/TextField';
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 
 const columns = [
-    { field: 'id', headerName: 'ID', width: 90 },
     {
-        field: 'firstName',
-        headerName: 'First name',
-        width: 150,
-        editable: true,
-    },
-    {
-        field: 'lastName',
-        headerName: 'Last name',
-        width: 150,
-        editable: true,
-    },
-    {
-        field: 'age',
-        headerName: 'Age',
+        field: 'id',
+        headerName: 'ID',
         type: 'number',
         width: 110,
-        editable: true,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
     },
     {
-        field: 'fullName',
-        headerName: 'Full name',
-        description: 'This column has a value getter and is not sortable.',
+        field: 'nombre',
+        headerName: 'Nombre',
+        width: 200,
         sortable: false,
-        width: 160,
-        valueGetter: (params) =>
-            `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-    }
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'productor',
+        headerName: 'Productor',
+        width: 200,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'presentacion',
+        headerName: 'Presentación',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'cantidad',
+        headerName: 'Cantidad',
+        type: 'number',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'peso',
+        headerName: 'Peso',
+        type: 'number',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'kg',
+        headerName: 'KG',
+        type: 'number',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+        valueFormatter: (params) => {
+            if (params.value == null) {
+                return '';
+            }
+            return `${params.value.toLocaleString()} kg`;
+        },
+    },
+    {
+        field: 'precio',
+        headerName: 'Precio',
+        type: 'number',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'total',
+        headerName: 'Total',
+        type: 'number',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+        valueGetter: (params) => params.row.kg * params.row.precio
+    },
+    {
+        field: 'divisa',
+        headerName: 'Divisa',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
 ];
 
 const rows = [
-    { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-    { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-    { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-    { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-    { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-    { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-    { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-    { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-    { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+    { id: 1, nombre: 'quimico', productir: 'Snow', presentacion: 'Jon', cantidad: 35, peso: 100, kg: 5, precio: 14, divisa: 'USD' },
+    { id: 2, nombre: 'quimico', productir: 'Lannister', presentacion: 'Cersei', cantidad: 42, peso: 100, kg: 5, precio: 14, divisa: 'USD' },
+    { id: 3, nombre: 'quimico', productir: 'Lannister', presentacion: 'Jaime', cantidad: 45, peso: 100, kg: 5, precio: 14, divisa: 'USD' },
+    { id: 4, nombre: 'quimico', productir: 'Stark', presentacion: 'Arya', cantidad: 16, peso: 100, kg: 5, precio: 14, divisa: 'USD' },
+    { id: 5, nombre: 'quimico', productir: 'Targaryen', presentacion: 'Daenerys', cantidad: null, peso: 100, kg: 5, precio: 14, divisa: 'USD' },
+    { id: 6, nombre: 'quimico', productir: 'Melisandre', presentacion: null, cantidad: 150, peso: 100, kg: 5, precio: 14, divisa: 'USD' },
+    { id: 7, nombre: 'quimico', productir: 'Clifford', presentacion: 'Ferrara', cantidad: 44, peso: 100, kg: 5, precio: 14, divisa: 'USD' },
+    { id: 8, nombre: 'quimico', productir: 'Frances', presentacion: 'Rossini', cantidad: 36, peso: 100, kg: 5, precio: 14, divisa: 'USD' },
+    { id: 9, nombre: 'quimico', productir: 'Roxie', presentacion: 'Harvey', cantidad: 65, peso: 100, kg: 5, precio: 14, divisa: 'USD' },
 
 ];
 
@@ -93,16 +157,20 @@ function quimicos_inventario() {
                 <DataGrid
                     rows={rows}
                     columns={columns}
+                    getRowHeight={() => 'auto'}
                     initialState={{
                         pagination: {
                             paginationModel: {
-                                pageSize: 100,
+                                pageSize: 10,
                             },
                         },
                     }}
                     slots={{
                         toolbar: GridToolbar,
                     }}
+                    disableColumnFilter
+                    disableColumnMenu
+                    disableRowSelectionOnClick
                 />
             </Box>
             <Modal

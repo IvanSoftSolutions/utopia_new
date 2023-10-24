@@ -3,47 +3,79 @@ import Box from '@mui/material/Box';
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 
 const columns = [
-    { field: 'id', headerName: 'ID', width: 90 },
     {
-        field: 'firstName',
-        headerName: 'First name',
-        width: 150,
-        editable: true,
+        field: 'fecha',
+        headerName: 'Fecha',
+        type: 'date',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
     },
     {
-        field: 'lastName',
-        headerName: 'Last name',
-        width: 150,
-        editable: true,
+        field: 'nombre',
+        headerName: 'Nombre',
+        width: 200,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
     },
     {
-        field: 'age',
-        headerName: 'Age',
+        field: 'cantidad',
+        headerName: 'Cantidad',
         type: 'number',
         width: 110,
-        editable: true,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
     },
     {
-        field: 'fullName',
-        headerName: 'Full name',
-        description: 'This column has a value getter and is not sortable.',
+        field: 'presentacion',
+        headerName: 'Presentación',
+        width: 110,
         sortable: false,
-        width: 160,
-        valueGetter: (params) =>
-            `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-    }
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'peso',
+        headerName: 'Peso',
+        type: 'number',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'total',
+        headerName: 'Total',
+        type: 'number',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'entradaSalida',
+        headerName: 'Entrada/Salida',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+
 ];
 
 const rows = [
-    { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-    { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-    { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-    { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-    { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-    { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-    { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-    { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-    { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+    { id: 1, fecha: null, nombre: 'quimico', cantidad: 5, presentacion: 'Jon', peso: 35, total: 100, entradaSalida: 'Entrada', },
+    { id: 2, fecha: null, nombre: 'quimico', cantidad: 5, presentacion: 'Cersei', peso: 42, total: 100, entradaSalida: 'Entrada', },
+    { id: 3, fecha: null, nombre: 'quimico', cantidad: 5, presentacion: 'Jaime', peso: 45, total: 100, entradaSalida: 'Entrada', },
+    { id: 4, fecha: null, nombre: 'quimico', cantidad: 5, presentacion: 'Arya', peso: 16, total: 100, entradaSalida: 'Entrada', },
+    { id: 5, fecha: null, nombre: 'quimico', cantidad: 5, presentacion: 'Daenerys', peso: null, total: 100, entradaSalida: 'Entrada', },
+    { id: 6, fecha: null, nombre: 'quimico', cantidad: 5, presentacion: null, peso: 150, total: 100, entradaSalida: 'Entrada', },
+    { id: 7, fecha: null, nombre: 'quimico', cantidad: 5, presentacion: 'Ferrara', peso: 44, total: 100, entradaSalida: 'Entrada', },
+    { id: 8, fecha: null, nombre: 'quimico', cantidad: 5, presentacion: 'Rossini', peso: 36, total: 100, entradaSalida: 'Entrada', },
+    { id: 9, fecha: null, nombre: 'quimico', cantidad: 5, presentacion: 'Harvey', peso: 65, total: 100, entradaSalida: 'Entrada', },
 
 ];
 
@@ -54,16 +86,20 @@ function quimicos_entrada_salida() {
                 <DataGrid
                     rows={rows}
                     columns={columns}
+                    getRowHeight={() => 'auto'}
                     initialState={{
                         pagination: {
                             paginationModel: {
-                                pageSize: 100,
+                                pageSize: 10,
                             },
                         },
                     }}
                     slots={{
                         toolbar: GridToolbar,
                     }}
+                    disableColumnFilter
+                    disableColumnMenu
+                    disableRowSelectionOnClick
                 />
             </Box>
         </div>
