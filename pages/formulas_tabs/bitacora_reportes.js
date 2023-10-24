@@ -3,47 +3,76 @@ import Box from '@mui/material/Box';
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 
 const columns = [
-    { field: 'id', headerName: 'ID', width: 90 },
     {
-        field: 'firstName',
-        headerName: 'First name',
-        width: 150,
-        editable: true,
+        field: 'usuario',
+        headerName: 'Usuario',
+        width: 110,
+        headerAlign: 'center',
+        align: 'center',
     },
     {
-        field: 'lastName',
-        headerName: 'Last name',
-        width: 150,
-        editable: true,
+        field: 'fecha',
+        headerName: 'Fecha',
+        type: 'date',
+        width: 110,
+        headerAlign: 'center',
+        align: 'center',
     },
     {
-        field: 'age',
-        headerName: 'Age',
+        field: 'formula',
+        headerName: 'Formula',
+        width: 250,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'peso',
+        headerName: 'Peso',
         type: 'number',
         width: 110,
-        editable: true,
+        headerAlign: 'center',
+        align: 'center',
+        valueFormatter: (params) => {
+            if (params.value == null) {
+                return '';
+            }
+            return `${params.value.toLocaleString()} kg`;
+        },
     },
     {
-        field: 'fullName',
-        headerName: 'Full name',
-        description: 'This column has a value getter and is not sortable.',
-        sortable: false,
-        width: 160,
-        valueGetter: (params) =>
-            `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-    }
+        field: 'grosor',
+        headerName: 'Grosor',
+        type: 'number',
+        width: 110,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'material',
+        headerName: 'Material',
+        width: 150,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
+        field: 'detalles',
+        headerName: 'Detalles',
+        width: 550,
+        headerAlign: 'center',
+        align: 'center',
+    },
 ];
 
 const rows = [
-    { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-    { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-    { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-    { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-    { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-    { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-    { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-    { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-    { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+    { id: 1, usuario: 'asdasd', formula: 'Jon', peso: 35, grosor: 10, material: 'vaca', detalles: 'asdkasdasd' },
+    { id: 2, usuario: 'asdasd', formula: 'Cersei', peso: 42, grosor: 10, material: 'vaca', detalles: 'asdkasdasd' },
+    { id: 3, usuario: 'asdasd', formula: 'Jaime', peso: 45, grosor: 10, material: 'vaca', detalles: 'asdkasdasd' },
+    { id: 4, usuario: 'asdasd', formula: 'Arya', peso: 16, grosor: 10, material: 'vaca', detalles: 'asdkasdasd' },
+    { id: 5, usuario: 'asdasd', formula: 'Daenerys', peso: null, grosor: 10, material: 'vaca', detalles: 'asdkasdasd' },
+    { id: 6, usuario: 'asdasd', formula: null, peso: 150, grosor: 10, material: 'vaca', detalles: 'asdkasdasd' },
+    { id: 7, usuario: 'asdasd', formula: 'Ferrara', peso: 44, grosor: 10, material: 'vaca', detalles: 'asdkasdasd' },
+    { id: 8, usuario: 'asdasd', formula: 'Rossini', peso: 36, grosor: 10, material: 'vaca', detalles: 'asdkasdasd' },
+    { id: 9, usuario: 'asdasd', formula: 'Harvey', peso: 65, grosor: 10, material: 'vaca', detalles: 'asdkasdasd' },
 
 ];
 
@@ -54,6 +83,7 @@ function bitacora_reportes() {
                 <DataGrid
                     rows={rows}
                     columns={columns}
+                    getRowHeight={() => 'auto'}
                     initialState={{
                         pagination: {
                             paginationModel: {
@@ -64,6 +94,9 @@ function bitacora_reportes() {
                     slots={{
                         toolbar: GridToolbar,
                     }}
+                    disableColumnFilter
+                    disableColumnMenu
+                    disableRowSelectionOnClick
                 />
             </Box>
         </div>

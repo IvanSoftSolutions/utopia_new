@@ -7,7 +7,7 @@ import Select from '@mui/material/Select';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import { DataGrid, GridToolbar } from '@mui/x-data-grid';
+import { DataGrid, GridToolbar, gridClasses } from '@mui/x-data-grid';
 
 
 export default function Formulas() {
@@ -18,47 +18,91 @@ export default function Formulas() {
     };
 
     const columns = [
-        { field: 'id', headerName: 'ID', width: 90 },
         {
-            field: 'firstName',
-            headerName: 'First name',
-            width: 150,
-            editable: true,
-        },
-        {
-            field: 'lastName',
-            headerName: 'Last name',
-            width: 150,
-            editable: true,
-        },
-        {
-            field: 'age',
-            headerName: 'Age',
+            field: 'porcentage',
+            headerName: 'Porcentaje %',
             type: 'number',
             width: 110,
-            editable: true,
+            sortable: false,
+            headerAlign: 'center',
+            align: 'center',
+            valueFormatter: (params) => {
+                if (params.value == null) {
+                    return '';
+                }
+                return `${params.value.toLocaleString()} %`;
+            },
         },
         {
-            field: 'fullName',
-            headerName: 'Full name',
-            description: 'This column has a value getter and is not sortable.',
+            field: 'cantidad',
+            headerName: 'Cantidad',
+            type: 'number',
+            width: 110,
             sortable: false,
-            width: 160,
-            valueGetter: (params) =>
-                `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-        }
+            headerAlign: 'center',
+            align: 'center',
+        },
+        {
+            field: 'producto',
+            headerName: 'Producto',
+            width: 350,
+            sortable: false,
+            headerAlign: 'center',
+            align: 'center',
+        },
+        {
+            field: 'temp',
+            headerName: 'Temp (C°)',
+            type: 'number',
+            width: 110,
+            sortable: false,
+            headerAlign: 'center',
+            align: 'center',
+            valueFormatter: (params) => {
+                if (params.value == null) {
+                    return '';
+                }
+                return `${params.value.toLocaleString()} °`;
+            },
+        },
+        {
+            field: 'tiempo',
+            headerName: 'Tiempo (min)',
+            type: 'number',
+            width: 110,
+            sortable: false,
+            headerAlign: 'center',
+            align: 'center',
+        },
+        {
+            field: 'cut',
+            headerName: '#Cut',
+            type: 'number',
+            width: 110,
+            sortable: false,
+            headerAlign: 'center',
+            align: 'center',
+        },
+        {
+            field: 'observaciones',
+            headerName: 'Observaciones',
+            width: 500,
+            sortable: false,
+            headerAlign: 'center',
+            align: 'center',
+        },
     ];
 
     const rows = [
-        { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-        { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-        { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-        { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-        { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-        { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-        { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-        { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-        { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+        { id: 1, porcentaje: 1, cantidad: 'Snow', producto: 'Jon', temp: 35, observaciones: 'aaaaaaaaassss' },
+        { id: 2, porcentaje: 2, cantidad: 'Lannister', producto: 'Cersei', temp: 42, observaciones: 'aaa aaa aaaaa a aaa aaaaaa aaaa aaa aa aa aaaaaaaaaa aaaaaaaaaa aaaaaaaa aaaaaaaaa' },
+        { id: 3, porcentaje: 3, cantidad: 'Lannister', producto: 'Jaime', temp: 45, observaciones: 'aaaaaaaaassss' },
+        { id: 4, porcentaje: 4, cantidad: 'Stark', producto: 'Arya', temp: 16, observaciones: 'aaaaaaaaassss' },
+        { id: 5, porcentaje: 5, cantidad: 'Targaryen', producto: 'Daenerys', temp: null, observaciones: 'aaaaaaaaassss' },
+        { id: 6, porcentaje: 6, cantidad: 'Melisandre', producto: null, temp: 150, observaciones: 'aaaaaaaaassss' },
+        { id: 7, porcentaje: 7, cantidad: 'Clifford', producto: 'Ferrara', temp: 44, observaciones: 'aaaaaaaaassss' },
+        { id: 8, porcentaje: 8, cantidad: 'Frances', producto: 'Rossini', temp: 36, observaciones: 'aaaaaaaaassss' },
+        { id: 9, porcentaje: 9, cantidad: 'Roxie', producto: 'Harvey', temp: 65, observaciones: 'aaaaaaaaassss' },
 
     ];
 
@@ -126,6 +170,7 @@ export default function Formulas() {
                 <DataGrid
                     rows={rows}
                     columns={columns}
+                    getRowHeight={() => 'auto'}
                     initialState={{
                         pagination: {
                             paginationModel: {
@@ -136,6 +181,9 @@ export default function Formulas() {
                     slots={{
                         toolbar: GridToolbar,
                     }}
+                    disableColumnFilter
+                    disableColumnMenu
+                    disableRowSelectionOnClick
                 />
             </Box>
         </div>
