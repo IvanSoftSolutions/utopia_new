@@ -16,6 +16,9 @@ export default function Formulas() {
     const [articulo, setArticulo] = React.useState('');
     const [color, setColor] = React.useState('');
     const [peso, setPeso] = React.useState(0);
+    const [grosor, setGrosor] = React.useState(0);
+    const [material, setMaterial] = React.useState(0);
+    const [detalles, setDetalles] = React.useState(0);
 
     const [rows, setRows] = useState([]);
 
@@ -35,6 +38,18 @@ export default function Formulas() {
         setPeso(event.target.value);
     };
 
+    const handleGrosorChange = (event) => {
+        setGrosor(event.target.value);
+    };
+
+    const handleMaterialChange = (event) => {
+        setMaterial(event.target.value);
+    };
+
+    const handleDetallesChange = (event) => {
+        setDetalles(event.target.value);
+    };
+
 
     function getFormulaRows(nombreFormula) {
         axios
@@ -46,7 +61,31 @@ export default function Formulas() {
             .catch((error) => {
                 console.log(error);
             })
+    }
 
+    function postBitacoraLog() {
+        const fecha = new Date();
+        const formula = articulo + color;
+
+        const data = {
+            fecha,
+            formula,
+            peso,
+            grosor,
+            material,
+            detalles
+        }
+
+        console.log(data);
+
+        axios
+            .post('http://localhost:5555/bitacora/', data)
+            .then((response) => {
+                console.log(response.data.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }
 
     function cantidadValueGetter(params) {
@@ -55,19 +94,6 @@ export default function Formulas() {
         }
         return (params.row.porcentaje * peso / 100)
     }
-
-    // useEffect(() => {
-    //     axios
-    //         .get('http://localhost:5555/formulas/')
-    //         .then((response) => {
-    //             // setRows(response.data.data);
-    //             console.log(response.data.data);
-    //         })
-    //         .catch((error) => {
-    //             console.log(error);
-    //         })
-    // }, [])
-
 
     const columns = [
         {
@@ -201,14 +227,14 @@ export default function Formulas() {
                 </Stack>
                 <Stack spacing={2}>
                     <TextField sx={{ minWidth: "15em" }} id="peso" label="Peso" variant="outlined" onChange={handlePesoChange} />
-                    <TextField sx={{ minWidth: "15em" }} id="grosor" label="Grosor" variant="outlined" />
-                    <TextField sx={{ minWidth: "15em" }} id="material" label="Material" variant="outlined" />
-                    <TextField sx={{ minWidth: "15em" }} id="detalles" label="Detalles" variant="outlined" />
+                    <TextField sx={{ minWidth: "15em" }} id="grosor" label="Grosor" variant="outlined" onChange={handleGrosorChange} />
+                    <TextField sx={{ minWidth: "15em" }} id="material" label="Material" variant="outlined" onChange={handleMaterialChange} />
+                    <TextField sx={{ minWidth: "15em" }} id="detalles" label="Detalles" variant="outlined" onChange={handleDetallesChange} />
                 </Stack>
             </Box>
             <Box sx={{ display: "flex", justifyContent: "space-around" }} >
                 <Button variant="contained" sx={{ minWidth: "15em", marginTop: "2em", marginBottom: "2em" }} onClick={() => getFormulaRows(articulo + color)} >Buscar</Button>
-                <Button variant="contained" sx={{ minWidth: "15em", marginTop: "2em", marginBottom: "2em" }} >Correr</Button>
+                <Button variant="contained" sx={{ minWidth: "15em", marginTop: "2em", marginBottom: "2em" }} onClick={postBitacoraLog} >Correr</Button>
             </Box>
             <Box sx={{}} >
                 <DataGrid
