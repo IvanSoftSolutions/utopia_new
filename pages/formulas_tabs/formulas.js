@@ -18,7 +18,7 @@ export default function Formulas() {
     const [peso, setPeso] = React.useState(0);
     const [grosor, setGrosor] = React.useState(0);
     const [material, setMaterial] = React.useState(0);
-    const [detalles, setDetalles] = React.useState(0);
+    const [detalles, setDetalles] = React.useState('');
 
     const [rows, setRows] = useState([]);
 
@@ -64,10 +64,11 @@ export default function Formulas() {
     }
 
     function postBitacoraLog() {
-        const fecha = new Date();
+        const fecha = new Date().toDateString();
         const formula = articulo + color;
 
         const data = {
+            // usuario,
             fecha,
             formula,
             peso,

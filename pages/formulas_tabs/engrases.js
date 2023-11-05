@@ -320,7 +320,6 @@ const rows = [
     { id: 7, fechaEngrase: null, numeroCarga: 10, cuero: 'vaca', camionPartida: 10, kg: 100, piezas: 20, material: 'venao', calibre: 45, linea: 'utopia', color: 'negro', fechaSecado: null, korona: true, engraseSeco: false, escurrir: true, desvenado: false, bauce: true, vacio: false, taic: true, aereo: false, toggling: true, ablandado: false, pulido: true, abatanado: false, vacio2: true, pistolas: false, roller: true, finilux: false, rotoprex: true, partido: false, grabado: true, envioPlanta: false, fechaFactura: null, numeroFactura: 69 },
     { id: 8, fechaEngrase: null, numeroCarga: 10, cuero: 'vaca', camionPartida: 10, kg: 100, piezas: 20, material: 'venao', calibre: 45, linea: 'utopia', color: 'negro', fechaSecado: null, korona: true, engraseSeco: false, escurrir: true, desvenado: false, bauce: true, vacio: false, taic: true, aereo: false, toggling: true, ablandado: false, pulido: true, abatanado: false, vacio2: true, pistolas: false, roller: true, finilux: false, rotoprex: true, partido: false, grabado: true, envioPlanta: false, fechaFactura: null, numeroFactura: 69 },
     { id: 9, fechaEngrase: null, numeroCarga: 10, cuero: 'vaca', camionPartida: 10, kg: 100, piezas: 20, material: 'venao', calibre: 45, linea: 'utopia', color: 'negro', fechaSecado: null, korona: true, engraseSeco: false, escurrir: true, desvenado: false, bauce: true, vacio: false, taic: true, aereo: false, toggling: true, ablandado: false, pulido: true, abatanado: false, vacio2: true, pistolas: false, roller: true, finilux: false, rotoprex: true, partido: false, grabado: true, envioPlanta: false, fechaFactura: null, numeroFactura: 69 },
-
 ];
 
 const style = {
@@ -340,9 +339,24 @@ const style = {
 
 function engrases() {
     const [openNew, setOpenNew] = React.useState(false);
+    // const [rows, setRows] = React.useState([]);
 
     const handleOpenNew = () => setOpenNew(true);
     const handleCloseNew = () => setOpenNew(false);
+
+    // React.useEffect(() => {
+    //     axios
+    //         .get('http://localhost:5555/getformula/' + nombreFormula)
+    //         .then((response) => {
+    //             setRows(response.data.data);
+    //             console.log(response.data.data);
+    //         })
+    //         .catch((error) => {
+    //             console.log(error);
+    //         })
+    // }, [])
+
+
 
     return (
         <div>
