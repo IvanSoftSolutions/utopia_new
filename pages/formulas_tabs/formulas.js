@@ -12,18 +12,18 @@ import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 
 
 export default function Formulas() {
-    const [age, setAge] = React.useState('');
+    const [pallet, setPallet] = React.useState('');
     const [articulo, setArticulo] = React.useState('');
     const [color, setColor] = React.useState('');
     const [peso, setPeso] = React.useState(0);
     const [grosor, setGrosor] = React.useState(0);
-    const [material, setMaterial] = React.useState(0);
+    const [material, setMaterial] = React.useState('');
     const [detalles, setDetalles] = React.useState('');
 
     const [rows, setRows] = useState([]);
 
-    const handleChange = (event) => {
-        setAge(event.target.value);
+    const handlePalletChange = (event) => {
+        setPallet(event.target.value);
     };
 
     const handleArticleChange = (event) => {
@@ -215,9 +215,9 @@ export default function Formulas() {
                         <Select
                             labelId="pallet-label"
                             id="pallet"
-                            value={age}
+                            value={pallet}
                             label="pallet"
-                            onChange={handleChange}
+                            onChange={handlePalletChange}
                             sx={{ minWidth: "15em" }}
                         >
                             <MenuItem value={10}></MenuItem>

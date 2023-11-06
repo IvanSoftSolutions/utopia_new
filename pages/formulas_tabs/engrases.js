@@ -1,4 +1,5 @@
 import * as React from 'react'
+import axios from 'axios';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
@@ -20,7 +21,7 @@ const columns = [
     {
         field: 'fechaEngrase',
         headerName: 'Fecha Engrase',
-        type: 'date',
+        type: 'string',
         width: 110,
         sortable: false,
         headerAlign: 'center',
@@ -94,6 +95,14 @@ const columns = [
         align: 'center',
     },
     {
+        field: 'linea',
+        headerName: 'Linea',
+        width: 110,
+        sortable: false,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    {
         field: 'color',
         headerName: 'Color',
         width: 110,
@@ -104,7 +113,7 @@ const columns = [
     {
         field: 'fechaSecado',
         headerName: 'Fecha Secado',
-        type: 'date',
+        type: 'string',
         width: 110,
         sortable: false,
         headerAlign: 'center',
@@ -293,7 +302,7 @@ const columns = [
     {
         field: 'fechaFactura',
         headerName: 'Fecha Factura',
-        type: 'date',
+        type: 'string',
         width: 110,
         sortable: false,
         headerAlign: 'center',
@@ -310,17 +319,17 @@ const columns = [
     },
 ];
 
-const rows = [
-    { id: 1, fechaEngrase: null, numeroCarga: 10, cuero: 'vaca', camionPartida: 10, kg: 100, piezas: 20, material: 'venao', calibre: 45, linea: 'utopia', color: 'negro', fechaSecado: null, korona: true, engraseSeco: false, escurrir: true, desvenado: false, bauce: true, vacio: false, taic: true, aereo: false, toggling: true, ablandado: false, pulido: true, abatanado: false, vacio2: true, pistolas: false, roller: true, finilux: false, rotoprex: true, partido: false, grabado: true, envioPlanta: false, fechaFactura: null, numeroFactura: 69 },
-    { id: 2, fechaEngrase: null, numeroCarga: 10, cuero: 'vaca', camionPartida: 10, kg: 100, piezas: 20, material: 'venao', calibre: 45, linea: 'utopia', color: 'negro', fechaSecado: null, korona: true, engraseSeco: false, escurrir: true, desvenado: false, bauce: true, vacio: false, taic: true, aereo: false, toggling: true, ablandado: false, pulido: true, abatanado: false, vacio2: true, pistolas: false, roller: true, finilux: false, rotoprex: true, partido: false, grabado: true, envioPlanta: false, fechaFactura: null, numeroFactura: 69 },
-    { id: 3, fechaEngrase: null, numeroCarga: 10, cuero: 'vaca', camionPartida: 10, kg: 100, piezas: 20, material: 'venao', calibre: 45, linea: 'utopia', color: 'negro', fechaSecado: null, korona: true, engraseSeco: false, escurrir: true, desvenado: false, bauce: true, vacio: false, taic: true, aereo: false, toggling: true, ablandado: false, pulido: true, abatanado: false, vacio2: true, pistolas: false, roller: true, finilux: false, rotoprex: true, partido: false, grabado: true, envioPlanta: false, fechaFactura: null, numeroFactura: 69 },
-    { id: 4, fechaEngrase: null, numeroCarga: 10, cuero: 'vaca', camionPartida: 10, kg: 100, piezas: 20, material: 'venao', calibre: 45, linea: 'utopia', color: 'negro', fechaSecado: null, korona: true, engraseSeco: false, escurrir: true, desvenado: false, bauce: true, vacio: false, taic: true, aereo: false, toggling: true, ablandado: false, pulido: true, abatanado: false, vacio2: true, pistolas: false, roller: true, finilux: false, rotoprex: true, partido: false, grabado: true, envioPlanta: false, fechaFactura: null, numeroFactura: 69 },
-    { id: 5, fechaEngrase: null, numeroCarga: 10, cuero: 'vaca', camionPartida: 10, kg: 100, piezas: 20, material: 'venao', calibre: 45, linea: 'utopia', color: 'negro', fechaSecado: null, korona: true, engraseSeco: false, escurrir: true, desvenado: false, bauce: true, vacio: false, taic: true, aereo: false, toggling: true, ablandado: false, pulido: true, abatanado: false, vacio2: true, pistolas: false, roller: true, finilux: false, rotoprex: true, partido: false, grabado: true, envioPlanta: false, fechaFactura: null, numeroFactura: 69 },
-    { id: 6, fechaEngrase: null, numeroCarga: 10, cuero: 'vaca', camionPartida: 10, kg: 100, piezas: 20, material: 'venao', calibre: 45, linea: 'utopia', color: 'negro', fechaSecado: null, korona: true, engraseSeco: false, escurrir: true, desvenado: false, bauce: true, vacio: false, taic: true, aereo: false, toggling: true, ablandado: false, pulido: true, abatanado: false, vacio2: true, pistolas: false, roller: true, finilux: false, rotoprex: true, partido: false, grabado: true, envioPlanta: false, fechaFactura: null, numeroFactura: 69 },
-    { id: 7, fechaEngrase: null, numeroCarga: 10, cuero: 'vaca', camionPartida: 10, kg: 100, piezas: 20, material: 'venao', calibre: 45, linea: 'utopia', color: 'negro', fechaSecado: null, korona: true, engraseSeco: false, escurrir: true, desvenado: false, bauce: true, vacio: false, taic: true, aereo: false, toggling: true, ablandado: false, pulido: true, abatanado: false, vacio2: true, pistolas: false, roller: true, finilux: false, rotoprex: true, partido: false, grabado: true, envioPlanta: false, fechaFactura: null, numeroFactura: 69 },
-    { id: 8, fechaEngrase: null, numeroCarga: 10, cuero: 'vaca', camionPartida: 10, kg: 100, piezas: 20, material: 'venao', calibre: 45, linea: 'utopia', color: 'negro', fechaSecado: null, korona: true, engraseSeco: false, escurrir: true, desvenado: false, bauce: true, vacio: false, taic: true, aereo: false, toggling: true, ablandado: false, pulido: true, abatanado: false, vacio2: true, pistolas: false, roller: true, finilux: false, rotoprex: true, partido: false, grabado: true, envioPlanta: false, fechaFactura: null, numeroFactura: 69 },
-    { id: 9, fechaEngrase: null, numeroCarga: 10, cuero: 'vaca', camionPartida: 10, kg: 100, piezas: 20, material: 'venao', calibre: 45, linea: 'utopia', color: 'negro', fechaSecado: null, korona: true, engraseSeco: false, escurrir: true, desvenado: false, bauce: true, vacio: false, taic: true, aereo: false, toggling: true, ablandado: false, pulido: true, abatanado: false, vacio2: true, pistolas: false, roller: true, finilux: false, rotoprex: true, partido: false, grabado: true, envioPlanta: false, fechaFactura: null, numeroFactura: 69 },
-];
+// const rows = [
+//     { id: 1, fechaEngrase: null, numeroCarga: 10, cuero: 'vaca', camionPartida: 10, kg: 100, piezas: 20, material: 'venao', calibre: 45, linea: 'utopia', color: 'negro', fechaSecado: null, korona: true, engraseSeco: false, escurrir: true, desvenado: false, bauce: true, vacio: false, taic: true, aereo: false, toggling: true, ablandado: false, pulido: true, abatanado: false, vacio2: true, pistolas: false, roller: true, finilux: false, rotoprex: true, partido: false, grabado: true, envioPlanta: false, fechaFactura: null, numeroFactura: 69 },
+//     { id: 2, fechaEngrase: null, numeroCarga: 10, cuero: 'vaca', camionPartida: 10, kg: 100, piezas: 20, material: 'venao', calibre: 45, linea: 'utopia', color: 'negro', fechaSecado: null, korona: true, engraseSeco: false, escurrir: true, desvenado: false, bauce: true, vacio: false, taic: true, aereo: false, toggling: true, ablandado: false, pulido: true, abatanado: false, vacio2: true, pistolas: false, roller: true, finilux: false, rotoprex: true, partido: false, grabado: true, envioPlanta: false, fechaFactura: null, numeroFactura: 69 },
+//     { id: 3, fechaEngrase: null, numeroCarga: 10, cuero: 'vaca', camionPartida: 10, kg: 100, piezas: 20, material: 'venao', calibre: 45, linea: 'utopia', color: 'negro', fechaSecado: null, korona: true, engraseSeco: false, escurrir: true, desvenado: false, bauce: true, vacio: false, taic: true, aereo: false, toggling: true, ablandado: false, pulido: true, abatanado: false, vacio2: true, pistolas: false, roller: true, finilux: false, rotoprex: true, partido: false, grabado: true, envioPlanta: false, fechaFactura: null, numeroFactura: 69 },
+//     { id: 4, fechaEngrase: null, numeroCarga: 10, cuero: 'vaca', camionPartida: 10, kg: 100, piezas: 20, material: 'venao', calibre: 45, linea: 'utopia', color: 'negro', fechaSecado: null, korona: true, engraseSeco: false, escurrir: true, desvenado: false, bauce: true, vacio: false, taic: true, aereo: false, toggling: true, ablandado: false, pulido: true, abatanado: false, vacio2: true, pistolas: false, roller: true, finilux: false, rotoprex: true, partido: false, grabado: true, envioPlanta: false, fechaFactura: null, numeroFactura: 69 },
+//     { id: 5, fechaEngrase: null, numeroCarga: 10, cuero: 'vaca', camionPartida: 10, kg: 100, piezas: 20, material: 'venao', calibre: 45, linea: 'utopia', color: 'negro', fechaSecado: null, korona: true, engraseSeco: false, escurrir: true, desvenado: false, bauce: true, vacio: false, taic: true, aereo: false, toggling: true, ablandado: false, pulido: true, abatanado: false, vacio2: true, pistolas: false, roller: true, finilux: false, rotoprex: true, partido: false, grabado: true, envioPlanta: false, fechaFactura: null, numeroFactura: 69 },
+//     { id: 6, fechaEngrase: null, numeroCarga: 10, cuero: 'vaca', camionPartida: 10, kg: 100, piezas: 20, material: 'venao', calibre: 45, linea: 'utopia', color: 'negro', fechaSecado: null, korona: true, engraseSeco: false, escurrir: true, desvenado: false, bauce: true, vacio: false, taic: true, aereo: false, toggling: true, ablandado: false, pulido: true, abatanado: false, vacio2: true, pistolas: false, roller: true, finilux: false, rotoprex: true, partido: false, grabado: true, envioPlanta: false, fechaFactura: null, numeroFactura: 69 },
+//     { id: 7, fechaEngrase: null, numeroCarga: 10, cuero: 'vaca', camionPartida: 10, kg: 100, piezas: 20, material: 'venao', calibre: 45, linea: 'utopia', color: 'negro', fechaSecado: null, korona: true, engraseSeco: false, escurrir: true, desvenado: false, bauce: true, vacio: false, taic: true, aereo: false, toggling: true, ablandado: false, pulido: true, abatanado: false, vacio2: true, pistolas: false, roller: true, finilux: false, rotoprex: true, partido: false, grabado: true, envioPlanta: false, fechaFactura: null, numeroFactura: 69 },
+//     { id: 8, fechaEngrase: null, numeroCarga: 10, cuero: 'vaca', camionPartida: 10, kg: 100, piezas: 20, material: 'venao', calibre: 45, linea: 'utopia', color: 'negro', fechaSecado: null, korona: true, engraseSeco: false, escurrir: true, desvenado: false, bauce: true, vacio: false, taic: true, aereo: false, toggling: true, ablandado: false, pulido: true, abatanado: false, vacio2: true, pistolas: false, roller: true, finilux: false, rotoprex: true, partido: false, grabado: true, envioPlanta: false, fechaFactura: null, numeroFactura: 69 },
+//     { id: 9, fechaEngrase: null, numeroCarga: 10, cuero: 'vaca', camionPartida: 10, kg: 100, piezas: 20, material: 'venao', calibre: 45, linea: 'utopia', color: 'negro', fechaSecado: null, korona: true, engraseSeco: false, escurrir: true, desvenado: false, bauce: true, vacio: false, taic: true, aereo: false, toggling: true, ablandado: false, pulido: true, abatanado: false, vacio2: true, pistolas: false, roller: true, finilux: false, rotoprex: true, partido: false, grabado: true, envioPlanta: false, fechaFactura: null, numeroFactura: 69 },
+// ];
 
 const style = {
     position: 'absolute',
@@ -338,25 +347,227 @@ const style = {
 };
 
 function engrases() {
+    const [fechaEngrase, setFechaEngrase] = React.useState('');
+    const [numeroCarga, setNumeroCarga] = React.useState(0);
+    const [cuero, setCuero] = React.useState('');
+    const [camionPartida, setCamionPartida] = React.useState(0);
+    const [kg, setKg] = React.useState(0);
+    const [piezas, setPiezas] = React.useState(0);
+    const [material, setMaterial] = React.useState('');
+    const [calibre, setCalibre] = React.useState(0);
+    const [linea, setLinea] = React.useState('');
+    const [color, setColor] = React.useState('');
+    const [fechaSecado, setFechaSecado] = React.useState('');
+    const [korona, setKorona] = React.useState(false);
+    const [engraseSeco, setEngraseSeco] = React.useState(false);
+    const [escurrir, setEscurrir] = React.useState(false);
+    const [desvenado, setDesvenado] = React.useState(false);
+    const [bauce, setBauce] = React.useState(false);
+    const [vacio, setVacio] = React.useState(false);
+    const [taic, setTaic] = React.useState(false);
+    const [aereo, setAereo] = React.useState(false);
+    const [toggling, setToggling] = React.useState(false);
+    const [ablandado, setAblandado] = React.useState(false);
+    const [pulido, setPulido] = React.useState(false);
+    const [abatanado, setAbatanado] = React.useState(false);
+    const [vacio2, setVacio2] = React.useState(false);
+    const [pistolas, setPistolas] = React.useState(false);
+    const [roller, setRoller] = React.useState(false);
+    const [finilux, setFinilux] = React.useState(false);
+    const [rotoprex, setRotoprex] = React.useState(false);
+    const [partido, setPartido] = React.useState(false);
+    const [grabado, setGrabado] = React.useState(false);
+    const [envioPlanta, setEnvioPlanta] = React.useState(false);
+    const [fechaFactura, setFechaFactura] = React.useState('');
+    const [numeroFactura, setNumeroFactura] = React.useState('');
+
     const [openNew, setOpenNew] = React.useState(false);
-    // const [rows, setRows] = React.useState([]);
+    const [rows, setRows] = React.useState([]);
 
     const handleOpenNew = () => setOpenNew(true);
     const handleCloseNew = () => setOpenNew(false);
 
-    // React.useEffect(() => {
-    //     axios
-    //         .get('http://localhost:5555/getformula/' + nombreFormula)
-    //         .then((response) => {
-    //             setRows(response.data.data);
-    //             console.log(response.data.data);
-    //         })
-    //         .catch((error) => {
-    //             console.log(error);
-    //         })
-    // }, [])
+    const handleFechaEngraseChange = (event) => {
+        setFechaEngrase(event.target.value);
+    };
 
+    const handleNumeroCargaChange = (event) => {
+        setNumeroCarga(event.target.value);
+    };
 
+    const handleCueroChange = (event) => {
+        setCuero(event.target.value);
+    };
+
+    const handleCamionPartidaChange = (event) => {
+        setCamionPartida(event.target.value);
+    };
+
+    const handleKgChange = (event) => {
+        setKg(event.target.value);
+    };
+
+    const handlePiezasChange = (event) => {
+        setPiezas(event.target.value);
+    };
+
+    const handleMaterialChange = (event) => {
+        setMaterial(event.target.value);
+    };
+
+    const handleCalibreChange = (event) => {
+        setCalibre(event.target.value);
+    };
+
+    const handleLineaChange = (event) => {
+        setLinea(event.target.value);
+    };
+
+    const handleColorChange = (event) => {
+        setColor(event.target.value);
+    };
+
+    const handleFechaSecadoChange = (event) => {
+        setFechaSecado(event.target.value);
+    };
+
+    const handleFechaFacturaChange = (event) => {
+        setFechaFactura(event.target.value);
+    };
+
+    const handleNumeroFacturaChange = (event) => {
+        setNumeroFactura(event.target.value);
+    };
+
+    const handleKorona = (event) => {
+        setKorona(event.target.value);
+    };
+    const handleEngraseSeco = (event) => {
+        setEngraseSeco(event.target.value);
+    };
+    const handleEscurrir = (event) => {
+        setEscurrir(event.target.value);
+    };
+    const handleDesvenado = (event) => {
+        setDesvenado(event.target.value);
+    };
+    const handleBauce = (event) => {
+        setBauce(event.target.value);
+    };
+    const handleVacio = (event) => {
+        setVacio(event.target.value);
+    };
+    const handleTaic = (event) => {
+        setTaic(event.target.value);
+    };
+    const handleAereo = (event) => {
+        setAereo(event.target.value);
+    };
+    const handleToggling = (event) => {
+        setToggling(event.target.value);
+    };
+    const handleAblandado = (event) => {
+        setAblandado(event.target.value);
+    };
+    const handlePulido = (event) => {
+        setPulido(event.target.value);
+    };
+    const handleAbatanado = (event) => {
+        setAbatanado(event.target.value);
+    };
+    const handleVacio2 = (event) => {
+        setVacio2(event.target.value);
+    };
+    const handlePistolas = (event) => {
+        setPistolas(event.target.value);
+    };
+    const handleRoller = (event) => {
+        setRoller(event.target.value);
+    };
+    const handleFinilux = (event) => {
+        setFinilux(event.target.value);
+    };
+    const handleRotoprex = (event) => {
+        setRotoprex(event.target.value);
+    };
+    const handlePartido = (event) => {
+        setPartido(event.target.value);
+    };
+    const handleGrabado = (event) => {
+        setGrabado(event.target.value);
+    };
+    const handleEnvioPlanta = (event) => {
+        setEnvioPlanta(event.target.value);
+    };
+
+    React.useEffect(() => {
+        let aux = 1;
+        axios
+            .get('http://localhost:5555/engrase/')
+            .then((response) => {
+                console.log(response.data.data);
+                response.data.data.forEach(function (element) {
+                    element.id = aux;
+                    aux++;
+                })
+                setRows(response.data.data);
+            })
+
+            .catch((error) => {
+                console.log(error);
+            })
+    }, [])
+
+    function postEngrase() {
+
+        const data = {
+            fechaEngrase,
+            numeroCarga,
+            cuero,
+            camionPartida,
+            kg,
+            piezas,
+            material,
+            calibre,
+            linea,
+            color,
+            fechaSecado,
+            korona,
+            engraseSeco,
+            escurrir,
+            desvenado,
+            bauce,
+            vacio,
+            taic,
+            aereo,
+            toggling,
+            ablandado,
+            pulido,
+            abatanado,
+            vacio2,
+            pistolas,
+            roller,
+            finilux,
+            rotoprex,
+            partido,
+            grabado,
+            envioPlanta,
+            fechaFactura,
+            numeroFactura,
+        }
+
+        console.log(data);
+
+        axios
+            .post('http://localhost:5555/engrase/', data)
+            .then((response) => {
+                console.log(response.data.data);
+                // setOpenNew(false);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
 
     return (
         <div>
@@ -393,109 +604,109 @@ function engrases() {
                     <h3>IFORMACION DE ENGRASE</h3>
                     <Box sx={{ display: "flex", justifyContent: "space-around" }}>
                         <Stack spacing={2}>
-                            <TextField sx={{ minWidth: "15em" }} id="Fecha" label="Fecha" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Numero Carga" label="Numero Carga" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Cuero" label="Cuero" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Camion/Partida" label="Camion/Partida" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Kilogramos" label="Kilogramos" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Piezas" label="Piezas" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Material" label="Material" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Calibre" label="Calibre" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Línea" label="Línea" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Color" label="Color" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Fecha Secado" label="Fecha Secado" variant="outlined" />
+                            <TextField sx={{ minWidth: "15em" }} id="Fecha" label="Fecha" variant="outlined" onChange={handleFechaEngraseChange} />
+                            <TextField sx={{ minWidth: "15em" }} id="Numero Carga" label="Numero Carga" variant="outlined" onChange={handleNumeroCargaChange} />
+                            <TextField sx={{ minWidth: "15em" }} id="Cuero" label="Cuero" variant="outlined" onChange={handleCueroChange} />
+                            <TextField sx={{ minWidth: "15em" }} id="Camion/Partida" label="Camion/Partida" variant="outlined" onChange={handleCamionPartidaChange} />
+                            <TextField sx={{ minWidth: "15em" }} id="Kilogramos" label="Kilogramos" variant="outlined" onChange={handleKgChange} />
+                            <TextField sx={{ minWidth: "15em" }} id="Piezas" label="Piezas" variant="outlined" onChange={handlePiezasChange} />
+                            <TextField sx={{ minWidth: "15em" }} id="Material" label="Material" variant="outlined" onChange={handleMaterialChange} />
+                            <TextField sx={{ minWidth: "15em" }} id="Calibre" label="Calibre" variant="outlined" onChange={handleCalibreChange} />
+                            <TextField sx={{ minWidth: "15em" }} id="Línea" label="Línea" variant="outlined" onChange={handleLineaChange} />
+                            <TextField sx={{ minWidth: "15em" }} id="Color" label="Color" variant="outlined" onChange={handleColorChange} />
+                            <TextField sx={{ minWidth: "15em" }} id="Fecha Secado" label="Fecha Secado" variant="outlined" onChange={handleFechaSecadoChange} />
                         </Stack>
                         <Stack spacing={2}>
-                            <TextField sx={{ minWidth: "15em" }} select id="Korona" label="Korona" defaultValue={false} variant="outlined">
+                            <TextField sx={{ minWidth: "15em" }} select id="Korona" label="Korona" defaultValue={false} variant="outlined" onChange={handleKorona}>
                                 <MenuItem value={true}> Si </MenuItem>
                                 <MenuItem value={false}> No </MenuItem>
                             </TextField>
-                            <TextField sx={{ minWidth: "15em" }} select id="Engrase Seco" label="Engrase Seco" defaultValue={false} variant="outlined">
+                            <TextField sx={{ minWidth: "15em" }} select id="Engrase Seco" label="Engrase Seco" defaultValue={false} variant="outlined" onChange={handleEngraseSeco}>
                                 <MenuItem value={true}> Si </MenuItem>
                                 <MenuItem value={false}> No </MenuItem>
                             </TextField>
-                            <TextField sx={{ minWidth: "15em" }} select id="Escurrir" label="Escurrir" defaultValue={false} variant="outlined">
+                            <TextField sx={{ minWidth: "15em" }} select id="Escurrir" label="Escurrir" defaultValue={false} variant="outlined" onChange={handleEscurrir}>
                                 <MenuItem value={true}> Si </MenuItem>
                                 <MenuItem value={false}> No </MenuItem>
                             </TextField>
-                            <TextField sx={{ minWidth: "15em" }} select id="Desvenado" label="Desvenado" defaultValue={false} variant="outlined">
+                            <TextField sx={{ minWidth: "15em" }} select id="Desvenado" label="Desvenado" defaultValue={false} variant="outlined" onChange={handleDesvenado}>
                                 <MenuItem value={true}> Si </MenuItem>
                                 <MenuItem value={false}> No </MenuItem>
                             </TextField>
-                            <TextField sx={{ minWidth: "15em" }} select id="Bauce" label="Bauce" defaultValue={false} variant="outlined">
+                            <TextField sx={{ minWidth: "15em" }} select id="Bauce" label="Bauce" defaultValue={false} variant="outlined" onChange={handleBauce}>
                                 <MenuItem value={true}> Si </MenuItem>
                                 <MenuItem value={false}> No </MenuItem>
                             </TextField>
-                            <TextField sx={{ minWidth: "15em" }} select id="Vacío" label="Vacío" defaultValue={false} variant="outlined">
+                            <TextField sx={{ minWidth: "15em" }} select id="Vacío" label="Vacío" defaultValue={false} variant="outlined" onChange={handleVacio}>
                                 <MenuItem value={true}> Si </MenuItem>
                                 <MenuItem value={false}> No </MenuItem>
                             </TextField>
-                            <TextField sx={{ minWidth: "15em" }} select id="TAIC" label="TAIC" defaultValue={false} variant="outlined">
+                            <TextField sx={{ minWidth: "15em" }} select id="TAIC" label="TAIC" defaultValue={false} variant="outlined" onChange={handleTaic}>
                                 <MenuItem value={true}> Si </MenuItem>
                                 <MenuItem value={false}> No </MenuItem>
                             </TextField>
-                            <TextField sx={{ minWidth: "15em" }} select id="Aéreo" label="Aéreo" defaultValue={false} variant="outlined">
+                            <TextField sx={{ minWidth: "15em" }} select id="Aéreo" label="Aéreo" defaultValue={false} variant="outlined" onChange={handleAereo}>
                                 <MenuItem value={true}> Si </MenuItem>
                                 <MenuItem value={false}> No </MenuItem>
                             </TextField>
-                            <TextField sx={{ minWidth: "15em" }} select id="Toggling" label="Toggling" defaultValue={false} variant="outlined">
+                            <TextField sx={{ minWidth: "15em" }} select id="Toggling" label="Toggling" defaultValue={false} variant="outlined" onChange={handleToggling}>
                                 <MenuItem value={true}> Si </MenuItem>
                                 <MenuItem value={false}> No </MenuItem>
                             </TextField>
-                            <TextField sx={{ minWidth: "15em" }} select id="Pulido" label="Pulido" defaultValue={false} variant="outlined">
+                            <TextField sx={{ minWidth: "15em" }} select id="Pulido" label="Pulido" defaultValue={false} variant="outlined" onChange={handlePulido}>
                                 <MenuItem value={true}> Si </MenuItem>
                                 <MenuItem value={false}> No </MenuItem>
                             </TextField>
-                            <TextField sx={{ minWidth: "15em" }} select id="Abatanado" label="Abatanado" defaultValue={false} variant="outlined">
+                            <TextField sx={{ minWidth: "15em" }} select id="Abatanado" label="Abatanado" defaultValue={false} variant="outlined" onChange={handleAbatanado}>
                                 <MenuItem value={true}> Si </MenuItem>
                                 <MenuItem value={false}> No </MenuItem>
                             </TextField>
 
                         </Stack>
                         <Stack spacing={2}>
-                            <TextField sx={{ minWidth: "15em" }} select id="Ablandado" label="Ablandado" defaultValue={false} variant="outlined">
+                            <TextField sx={{ minWidth: "15em" }} select id="Ablandado" label="Ablandado" defaultValue={false} variant="outlined" onChange={handleAblandado}>
                                 <MenuItem value={true}> Si </MenuItem>
                                 <MenuItem value={false}> No </MenuItem>
                             </TextField>
-                            <TextField sx={{ minWidth: "15em" }} select id="Vacío 2" label="Vacío 2" defaultValue={false} variant="outlined">
+                            <TextField sx={{ minWidth: "15em" }} select id="Vacío 2" label="Vacío 2" defaultValue={false} variant="outlined" onChange={handleVacio2}>
                                 <MenuItem value={true}> Si </MenuItem>
                                 <MenuItem value={false}> No </MenuItem>
                             </TextField>
-                            <TextField sx={{ minWidth: "15em" }} select id="Pistolas" label="Pistolas" defaultValue={false} variant="outlined">
+                            <TextField sx={{ minWidth: "15em" }} select id="Pistolas" label="Pistolas" defaultValue={false} variant="outlined" onChange={handlePistolas}>
                                 <MenuItem value={true}> Si </MenuItem>
                                 <MenuItem value={false}> No </MenuItem>
                             </TextField>
-                            <TextField sx={{ minWidth: "15em" }} select id="Roller" label="Roller" defaultValue={false} variant="outlined">
+                            <TextField sx={{ minWidth: "15em" }} select id="Roller" label="Roller" defaultValue={false} variant="outlined" onChange={handleRoller}>
                                 <MenuItem value={true}> Si </MenuItem>
                                 <MenuItem value={false}> No </MenuItem>
                             </TextField>
-                            <TextField sx={{ minWidth: "15em" }} select id="Finilux" label="Finilux" defaultValue={false} variant="outlined">
+                            <TextField sx={{ minWidth: "15em" }} select id="Finilux" label="Finilux" defaultValue={false} variant="outlined" onChange={handleFinilux}>
                                 <MenuItem value={true}> Si </MenuItem>
                                 <MenuItem value={false}> No </MenuItem>
                             </TextField>
-                            <TextField sx={{ minWidth: "15em" }} select id="Rotoprex" label="Rotoprex" defaultValue={false} variant="outlined">
+                            <TextField sx={{ minWidth: "15em" }} select id="Rotoprex" label="Rotoprex" defaultValue={false} variant="outlined" onChange={handleRotoprex}>
                                 <MenuItem value={true}> Si </MenuItem>
                                 <MenuItem value={false}> No </MenuItem>
                             </TextField>
-                            <TextField sx={{ minWidth: "15em" }} select id="Partido" label="Partido" defaultValue={false} variant="outlined">
+                            <TextField sx={{ minWidth: "15em" }} select id="Partido" label="Partido" defaultValue={false} variant="outlined" onChange={handlePartido}>
                                 <MenuItem value={true}> Si </MenuItem>
                                 <MenuItem value={false}> No </MenuItem>
                             </TextField>
-                            <TextField sx={{ minWidth: "15em" }} select id="Grabado" label="Grabado" defaultValue={false} variant="outlined">
+                            <TextField sx={{ minWidth: "15em" }} select id="Grabado" label="Grabado" defaultValue={false} variant="outlined" onChange={handleGrabado}>
                                 <MenuItem value={true}> Si </MenuItem>
                                 <MenuItem value={false}> No </MenuItem>
                             </TextField>
-                            <TextField sx={{ minWidth: "15em" }} select id="Envio Planta" label="Envio Planta" defaultValue={false} variant="outlined">
+                            <TextField sx={{ minWidth: "15em" }} select id="Envio Planta" label="Envio Planta" defaultValue={false} variant="outlined" onChange={handleEnvioPlanta}>
                                 <MenuItem value={true}> Si </MenuItem>
                                 <MenuItem value={false}> No </MenuItem>
                             </TextField>
-                            <TextField sx={{ minWidth: "15em" }} id="Fecha Facturacion" label="Fecha Facturacion" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Numero Factura" label="Numero Factura" variant="outlined" />
+                            <TextField sx={{ minWidth: "15em" }} id="Fecha Facturacion" label="Fecha Factura" variant="outlined" onChange={handleFechaFacturaChange} />
+                            <TextField sx={{ minWidth: "15em" }} id="Numero Factura" label="Numero Factura" variant="outlined" onChange={handleNumeroFacturaChange} />
 
                         </Stack>
                     </Box>
                     <Box sx={{ display: "flex", justifyContent: "space-around" }}>
-                        <Button variant="contained" sx={{ maxWidth: "6.5em", marginTop: "2em", marginBottom: "2em" }} >Aceptar</Button>
+                        <Button variant="contained" sx={{ maxWidth: "6.5em", marginTop: "2em", marginBottom: "2em" }} onClick={postEngrase}>Aceptar</Button>
                         <Button variant="contained" sx={{ maxWidth: "6.5em", marginTop: "2em", marginBottom: "2em" }} onClick={handleCloseNew} >Cancelar</Button>
                     </Box>
 
