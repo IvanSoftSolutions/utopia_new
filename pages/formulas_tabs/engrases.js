@@ -1,5 +1,7 @@
 import * as React from 'react'
 import axios from 'axios';
+import dayjs from 'dayjs';
+import 'dayjs/locale/es-mx';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
@@ -7,6 +9,9 @@ import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 
 const columns = [
     {
@@ -22,7 +27,7 @@ const columns = [
         field: 'fechaEngrase',
         headerName: 'Fecha Engrase',
         type: 'string',
-        width: 110,
+        width: 130,
         sortable: false,
         headerAlign: 'center',
         align: 'center',
@@ -114,7 +119,7 @@ const columns = [
         field: 'fechaSecado',
         headerName: 'Fecha Secado',
         type: 'string',
-        width: 110,
+        width: 130,
         sortable: false,
         headerAlign: 'center',
         align: 'center',
@@ -303,7 +308,7 @@ const columns = [
         field: 'fechaFactura',
         headerName: 'Fecha Factura',
         type: 'string',
-        width: 110,
+        width: 130,
         sortable: false,
         headerAlign: 'center',
         align: 'center',
@@ -318,18 +323,6 @@ const columns = [
         align: 'center',
     },
 ];
-
-// const rows = [
-//     { id: 1, fechaEngrase: null, numeroCarga: 10, cuero: 'vaca', camionPartida: 10, kg: 100, piezas: 20, material: 'venao', calibre: 45, linea: 'utopia', color: 'negro', fechaSecado: null, korona: true, engraseSeco: false, escurrir: true, desvenado: false, bauce: true, vacio: false, taic: true, aereo: false, toggling: true, ablandado: false, pulido: true, abatanado: false, vacio2: true, pistolas: false, roller: true, finilux: false, rotoprex: true, partido: false, grabado: true, envioPlanta: false, fechaFactura: null, numeroFactura: 69 },
-//     { id: 2, fechaEngrase: null, numeroCarga: 10, cuero: 'vaca', camionPartida: 10, kg: 100, piezas: 20, material: 'venao', calibre: 45, linea: 'utopia', color: 'negro', fechaSecado: null, korona: true, engraseSeco: false, escurrir: true, desvenado: false, bauce: true, vacio: false, taic: true, aereo: false, toggling: true, ablandado: false, pulido: true, abatanado: false, vacio2: true, pistolas: false, roller: true, finilux: false, rotoprex: true, partido: false, grabado: true, envioPlanta: false, fechaFactura: null, numeroFactura: 69 },
-//     { id: 3, fechaEngrase: null, numeroCarga: 10, cuero: 'vaca', camionPartida: 10, kg: 100, piezas: 20, material: 'venao', calibre: 45, linea: 'utopia', color: 'negro', fechaSecado: null, korona: true, engraseSeco: false, escurrir: true, desvenado: false, bauce: true, vacio: false, taic: true, aereo: false, toggling: true, ablandado: false, pulido: true, abatanado: false, vacio2: true, pistolas: false, roller: true, finilux: false, rotoprex: true, partido: false, grabado: true, envioPlanta: false, fechaFactura: null, numeroFactura: 69 },
-//     { id: 4, fechaEngrase: null, numeroCarga: 10, cuero: 'vaca', camionPartida: 10, kg: 100, piezas: 20, material: 'venao', calibre: 45, linea: 'utopia', color: 'negro', fechaSecado: null, korona: true, engraseSeco: false, escurrir: true, desvenado: false, bauce: true, vacio: false, taic: true, aereo: false, toggling: true, ablandado: false, pulido: true, abatanado: false, vacio2: true, pistolas: false, roller: true, finilux: false, rotoprex: true, partido: false, grabado: true, envioPlanta: false, fechaFactura: null, numeroFactura: 69 },
-//     { id: 5, fechaEngrase: null, numeroCarga: 10, cuero: 'vaca', camionPartida: 10, kg: 100, piezas: 20, material: 'venao', calibre: 45, linea: 'utopia', color: 'negro', fechaSecado: null, korona: true, engraseSeco: false, escurrir: true, desvenado: false, bauce: true, vacio: false, taic: true, aereo: false, toggling: true, ablandado: false, pulido: true, abatanado: false, vacio2: true, pistolas: false, roller: true, finilux: false, rotoprex: true, partido: false, grabado: true, envioPlanta: false, fechaFactura: null, numeroFactura: 69 },
-//     { id: 6, fechaEngrase: null, numeroCarga: 10, cuero: 'vaca', camionPartida: 10, kg: 100, piezas: 20, material: 'venao', calibre: 45, linea: 'utopia', color: 'negro', fechaSecado: null, korona: true, engraseSeco: false, escurrir: true, desvenado: false, bauce: true, vacio: false, taic: true, aereo: false, toggling: true, ablandado: false, pulido: true, abatanado: false, vacio2: true, pistolas: false, roller: true, finilux: false, rotoprex: true, partido: false, grabado: true, envioPlanta: false, fechaFactura: null, numeroFactura: 69 },
-//     { id: 7, fechaEngrase: null, numeroCarga: 10, cuero: 'vaca', camionPartida: 10, kg: 100, piezas: 20, material: 'venao', calibre: 45, linea: 'utopia', color: 'negro', fechaSecado: null, korona: true, engraseSeco: false, escurrir: true, desvenado: false, bauce: true, vacio: false, taic: true, aereo: false, toggling: true, ablandado: false, pulido: true, abatanado: false, vacio2: true, pistolas: false, roller: true, finilux: false, rotoprex: true, partido: false, grabado: true, envioPlanta: false, fechaFactura: null, numeroFactura: 69 },
-//     { id: 8, fechaEngrase: null, numeroCarga: 10, cuero: 'vaca', camionPartida: 10, kg: 100, piezas: 20, material: 'venao', calibre: 45, linea: 'utopia', color: 'negro', fechaSecado: null, korona: true, engraseSeco: false, escurrir: true, desvenado: false, bauce: true, vacio: false, taic: true, aereo: false, toggling: true, ablandado: false, pulido: true, abatanado: false, vacio2: true, pistolas: false, roller: true, finilux: false, rotoprex: true, partido: false, grabado: true, envioPlanta: false, fechaFactura: null, numeroFactura: 69 },
-//     { id: 9, fechaEngrase: null, numeroCarga: 10, cuero: 'vaca', camionPartida: 10, kg: 100, piezas: 20, material: 'venao', calibre: 45, linea: 'utopia', color: 'negro', fechaSecado: null, korona: true, engraseSeco: false, escurrir: true, desvenado: false, bauce: true, vacio: false, taic: true, aereo: false, toggling: true, ablandado: false, pulido: true, abatanado: false, vacio2: true, pistolas: false, roller: true, finilux: false, rotoprex: true, partido: false, grabado: true, envioPlanta: false, fechaFactura: null, numeroFactura: 69 },
-// ];
 
 const style = {
     position: 'absolute',
@@ -347,7 +340,7 @@ const style = {
 };
 
 function engrases() {
-    const [fechaEngrase, setFechaEngrase] = React.useState('');
+    const [fechaEngrase, setFechaEngrase] = React.useState(new Date());
     const [numeroCarga, setNumeroCarga] = React.useState(0);
     const [cuero, setCuero] = React.useState('');
     const [camionPartida, setCamionPartida] = React.useState(0);
@@ -357,7 +350,7 @@ function engrases() {
     const [calibre, setCalibre] = React.useState(0);
     const [linea, setLinea] = React.useState('');
     const [color, setColor] = React.useState('');
-    const [fechaSecado, setFechaSecado] = React.useState('');
+    const [fechaSecado, setFechaSecado] = React.useState(new Date());
     const [korona, setKorona] = React.useState(false);
     const [engraseSeco, setEngraseSeco] = React.useState(false);
     const [escurrir, setEscurrir] = React.useState(false);
@@ -378,7 +371,7 @@ function engrases() {
     const [partido, setPartido] = React.useState(false);
     const [grabado, setGrabado] = React.useState(false);
     const [envioPlanta, setEnvioPlanta] = React.useState(false);
-    const [fechaFactura, setFechaFactura] = React.useState('');
+    const [fechaFactura, setFechaFactura] = React.useState(new Date());
     const [numeroFactura, setNumeroFactura] = React.useState('');
 
     const [openNew, setOpenNew] = React.useState(false);
@@ -597,14 +590,18 @@ function engrases() {
             <Modal
                 open={openNew}
                 onClose={handleCloseNew}
-                aria-labelledby="nueva-venta"
-                aria-describedby="modal-nueva-venta"
+                aria-labelledby="nuevo-engrase"
+                aria-describedby="modal-nuevo-engrase"
             >
                 <Box sx={style}>
                     <h3>IFORMACION DE ENGRASE</h3>
                     <Box sx={{ display: "flex", justifyContent: "space-around" }}>
                         <Stack spacing={2}>
-                            <TextField sx={{ minWidth: "15em" }} id="Fecha" label="Fecha" variant="outlined" onChange={handleFechaEngraseChange} />
+                            <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='es-mx'>
+                                <DesktopDatePicker label="Fecha Engrase" value={dayjs(fechaEngrase)} onChange={(newValue) => setFechaEngrase((newValue.$d).toDateString())}
+                                />
+                            </LocalizationProvider>
+                            {/* <TextField sx={{ minWidth: "15em" }} id="Fecha" label="Fecha Engrase" variant="outlined" onChange={handleFechaEngraseChange} /> */}
                             <TextField sx={{ minWidth: "15em" }} id="Numero Carga" label="Numero Carga" variant="outlined" onChange={handleNumeroCargaChange} />
                             <TextField sx={{ minWidth: "15em" }} id="Cuero" label="Cuero" variant="outlined" onChange={handleCueroChange} />
                             <TextField sx={{ minWidth: "15em" }} id="Camion/Partida" label="Camion/Partida" variant="outlined" onChange={handleCamionPartidaChange} />
@@ -614,7 +611,10 @@ function engrases() {
                             <TextField sx={{ minWidth: "15em" }} id="Calibre" label="Calibre" variant="outlined" onChange={handleCalibreChange} />
                             <TextField sx={{ minWidth: "15em" }} id="Línea" label="Línea" variant="outlined" onChange={handleLineaChange} />
                             <TextField sx={{ minWidth: "15em" }} id="Color" label="Color" variant="outlined" onChange={handleColorChange} />
-                            <TextField sx={{ minWidth: "15em" }} id="Fecha Secado" label="Fecha Secado" variant="outlined" onChange={handleFechaSecadoChange} />
+                            <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='es-mx'>
+                                <DesktopDatePicker label="Fecha Secado" value={dayjs(fechaSecado)} onChange={(newValue) => setFechaSecado((newValue.$d).toDateString())}
+                                />
+                            </LocalizationProvider>
                         </Stack>
                         <Stack spacing={2}>
                             <TextField sx={{ minWidth: "15em" }} select id="Korona" label="Korona" defaultValue={false} variant="outlined" onChange={handleKorona}>
@@ -700,7 +700,10 @@ function engrases() {
                                 <MenuItem value={true}> Si </MenuItem>
                                 <MenuItem value={false}> No </MenuItem>
                             </TextField>
-                            <TextField sx={{ minWidth: "15em" }} id="Fecha Facturacion" label="Fecha Factura" variant="outlined" onChange={handleFechaFacturaChange} />
+                            <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='es-mx'>
+                                <DesktopDatePicker label="Fecha Factura" value={dayjs(fechaFactura)} onChange={(newValue) => setFechaFactura((newValue.$d).toDateString())}
+                                />
+                            </LocalizationProvider>
                             <TextField sx={{ minWidth: "15em" }} id="Numero Factura" label="Numero Factura" variant="outlined" onChange={handleNumeroFacturaChange} />
 
                         </Stack>
