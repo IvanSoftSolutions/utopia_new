@@ -1,4 +1,5 @@
 import * as React from 'react'
+import axios from 'axios';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
@@ -48,7 +49,7 @@ const columns = [
         field: 'cantidad',
         headerName: 'Cantidad',
         type: 'number',
-        width: 110,
+        width: 150,
         sortable: false,
         headerAlign: 'center',
         align: 'center',
@@ -56,15 +57,6 @@ const columns = [
     {
         field: 'peso',
         headerName: 'Peso',
-        type: 'number',
-        width: 110,
-        sortable: false,
-        headerAlign: 'center',
-        align: 'center',
-    },
-    {
-        field: 'kg',
-        headerName: 'KG',
         type: 'number',
         width: 110,
         sortable: false,
@@ -90,11 +82,11 @@ const columns = [
         field: 'total',
         headerName: 'Total',
         type: 'number',
-        width: 110,
+        width: 125,
         sortable: false,
         headerAlign: 'center',
         align: 'center',
-        valueGetter: (params) => params.row.kg * params.row.precio
+        valueGetter: (params) => params.row.cantidad * params.row.precio
     },
     {
         field: 'divisa',
@@ -104,19 +96,6 @@ const columns = [
         headerAlign: 'center',
         align: 'center',
     },
-];
-
-const rows = [
-    { id: 1, nombre: 'quimico', productor: 'Snow', presentacion: 'Jon', cantidad: 35, peso: 100, kg: 5, precio: 14, divisa: 'USD' },
-    { id: 2, nombre: 'quimico', productor: 'Lannister', presentacion: 'Cersei', cantidad: 42, peso: 100, kg: 5, precio: 14, divisa: 'USD' },
-    { id: 3, nombre: 'quimico', productor: 'Lannister', presentacion: 'Jaime', cantidad: 45, peso: 100, kg: 5, precio: 14, divisa: 'USD' },
-    { id: 4, nombre: 'quimico', productor: 'Stark', presentacion: 'Arya', cantidad: 16, peso: 100, kg: 5, precio: 14, divisa: 'USD' },
-    { id: 5, nombre: 'quimico', productor: 'Targaryen', presentacion: 'Daenerys', cantidad: null, peso: 100, kg: 5, precio: 14, divisa: 'USD' },
-    { id: 6, nombre: 'quimico', productor: 'Melisandre', presentacion: null, cantidad: 150, peso: 100, kg: 5, precio: 14, divisa: 'USD' },
-    { id: 7, nombre: 'quimico', productor: 'Clifford', presentacion: 'Ferrara', cantidad: 44, peso: 100, kg: 5, precio: 14, divisa: 'USD' },
-    { id: 8, nombre: 'quimico', productor: 'Frances', presentacion: 'Rossini', cantidad: 36, peso: 100, kg: 5, precio: 14, divisa: 'USD' },
-    { id: 9, nombre: 'quimico', productor: 'Roxie', presentacion: 'Harvey', cantidad: 65, peso: 100, kg: 5, precio: 14, divisa: 'USD' },
-
 ];
 
 const style = {
@@ -133,9 +112,19 @@ const style = {
 };
 
 function quimicos_inventario() {
+    const [rows, setRows] = React.useState([]);
+    const [nombre, setNombre] = React.useState('');
+    const [productor, setProductor] = React.useState('');
+    const [presentacion, setPresentacion] = React.useState('');
+    const [cantidad, setCantidad] = React.useState(0);
+    const [peso, setPeso] = React.useState(0);
+    const [precio, setPrecio] = React.useState(0);
+    const [divisa, setDivisa] = React.useState('');
+    const [quimico, setQuimico] = React.useState('');
+    const [addCantidad, setAddCantidad] = React.useState(0);
+
     const [openNew, setOpenNew] = React.useState(false);
     const [openAdd, setOpenAdd] = React.useState(false);
-    const [quimico, setQuimico] = React.useState('');
 
     const handleOpenNew = () => setOpenNew(true);
     const handleCloseNew = () => setOpenNew(false);
@@ -143,9 +132,104 @@ function quimicos_inventario() {
     const handleOpenAdd = () => setOpenAdd(true);
     const handleCloseAdd = () => setOpenAdd(false);
 
+    const handleNombreChange = (event) => {
+        setNombre(event.target.value);
+    };
+
+    const handleProductorChange = (event) => {
+        setProductor(event.target.value);
+    };
+
+    const handlePresentacionChange = (event) => {
+        setPresentacion(event.target.value);
+    };
+
+    const handleCantidadChange = (event) => {
+        setCantidad(event.target.value);
+    };
+
+    const handlePesoChange = (event) => {
+        setPeso(event.target.value);
+    };
+
+    const handlePrecioChange = (event) => {
+        setPrecio(event.target.value);
+    };
+
+    const handleDivisaChange = (event) => {
+        setDivisa(event.target.value);
+    };
+
     const handleQuimicoChange = (event) => {
         setQuimico(event.target.value);
     };
+
+    const handleAddCantidadChange = (event) => {
+        setAddCantidad(event.target.value);
+    };
+
+    React.useEffect(() => {
+        let aux = 1;
+        axios
+            .get('http://localhost:5555/quimico_inventario/')
+            .then((response) => {
+                console.log(response.data.data);
+                response.data.data.forEach(function (element) {
+                    element.id = aux;
+                    aux++;
+                })
+                setRows(response.data.data);
+            })
+
+            .catch((error) => {
+                console.log(error);
+            })
+    }, [])
+
+    function postQuimico() {
+
+        const data = {
+            nombre,
+            productor,
+            presentacion,
+            cantidad,
+            peso,
+            precio,
+            divisa
+        }
+
+        console.log(data);
+
+        axios
+            .post('http://localhost:5555/quimico_inventario/', data)
+            .then((response) => {
+                console.log(response.data.data);
+                // setOpenNew(false);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
+    function postAddQuimico() {
+
+        const data = {
+            nombre: quimico,
+            cantidad: rows.find(x => x.nombre === quimico).cantidad + +addCantidad
+        }
+
+        console.log(data);
+
+        axios
+            .put('http://localhost:5555/quimico_inventario/', data)
+            .then((response) => {
+                console.log(response.data.data);
+                setOpenAdd(false);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
 
     return (
         <div>
@@ -182,15 +266,15 @@ function quimicos_inventario() {
                 <Box sx={style}>
                     <h3>INFORMACION</h3>
                     <Stack spacing={2}>
-                        <TextField sx={{ minWidth: "15em" }} id="Nombre" label="Nombre" variant="outlined" />
-                        <TextField sx={{ minWidth: "15em" }} id="Productor" label="Productor" variant="outlined" />
-                        <TextField sx={{ minWidth: "15em" }} id="Presentacion" label="Presentacion" variant="outlined" />
-                        <TextField sx={{ minWidth: "15em" }} id="Cantidad" label="Cantidad" variant="outlined" />
-                        <TextField sx={{ minWidth: "15em" }} id="Peso" label="Peso" variant="outlined" />
-                        <TextField sx={{ minWidth: "15em" }} id="Precio" label="Precio" variant="outlined" />
-                        <TextField sx={{ minWidth: "15em" }} id="Divisa" label="Divisa" variant="outlined" />
+                        <TextField sx={{ minWidth: "15em" }} id="Nombre" label="Nombre" variant="outlined" onChange={handleNombreChange} />
+                        <TextField sx={{ minWidth: "15em" }} id="Productor" label="Productor" variant="outlined" onChange={handleProductorChange} />
+                        <TextField sx={{ minWidth: "15em" }} id="Presentacion" label="Presentacion" variant="outlined" onChange={handlePresentacionChange} />
+                        <TextField sx={{ minWidth: "15em" }} id="Cantidad" label="Cantidad" variant="outlined" onChange={handleCantidadChange} />
+                        <TextField sx={{ minWidth: "15em" }} id="Peso" label="Peso" variant="outlined" onChange={handlePesoChange} />
+                        <TextField sx={{ minWidth: "15em" }} id="Precio" label="Precio" variant="outlined" onChange={handlePrecioChange} />
+                        <TextField sx={{ minWidth: "15em" }} id="Divisa" label="Divisa" variant="outlined" onChange={handleDivisaChange} />
                     </Stack>
-                    <Button variant="contained" sx={{ minWidth: "6.5em", marginTop: "2em", marginBottom: "2em", marginRight: "1em" }} >Aceptar</Button>
+                    <Button variant="contained" sx={{ minWidth: "6.5em", marginTop: "2em", marginBottom: "2em", marginRight: "1em" }} onClick={postQuimico} >Aceptar</Button>
                     <Button variant="contained" sx={{ minWidth: "6.5em", marginLeft: "1em" }} onClick={handleCloseNew} >Cancelar</Button>
                 </Box>
             </Modal>
@@ -213,14 +297,14 @@ function quimicos_inventario() {
                                 onChange={handleQuimicoChange}
                                 sx={{ minWidth: "15em" }}
                             >
-                                <MenuItem value={10}></MenuItem>
-                                <MenuItem value={20}></MenuItem>
-                                <MenuItem value={30}></MenuItem>
+                                {rows.map((item) => (
+                                    <MenuItem key={item.id} value={item.nombre}>{item.nombre}</MenuItem>
+                                ))}
                             </Select>
                         </FormControl>
-                        <TextField sx={{ minWidth: "15em" }} id="quimico-cantidad" label="Cantidad" variant="outlined" />
+                        <TextField sx={{ minWidth: "15em" }} id="quimico-cantidad" label="Cantidad" variant="outlined" onChange={handleAddCantidadChange} />
                     </Stack>
-                    <Button variant="contained" sx={{ minWidth: "6.5em", marginTop: "2em", marginBottom: "2em", marginRight: "1em" }} >Aceptar</Button>
+                    <Button variant="contained" sx={{ minWidth: "6.5em", marginTop: "2em", marginBottom: "2em", marginRight: "1em" }} onClick={postAddQuimico} >Aceptar</Button>
                     <Button variant="contained" sx={{ minWidth: "6.5em", marginLeft: "1em" }} onClick={handleCloseAdd} >Cancelar</Button>
                 </Box>
             </Modal>

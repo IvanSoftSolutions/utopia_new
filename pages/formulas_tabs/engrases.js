@@ -340,6 +340,8 @@ const style = {
 };
 
 function engrases() {
+    const [rows, setRows] = React.useState([]);
+
     const [fechaEngrase, setFechaEngrase] = React.useState(new Date());
     const [numeroCarga, setNumeroCarga] = React.useState(0);
     const [cuero, setCuero] = React.useState('');
@@ -375,14 +377,9 @@ function engrases() {
     const [numeroFactura, setNumeroFactura] = React.useState('');
 
     const [openNew, setOpenNew] = React.useState(false);
-    const [rows, setRows] = React.useState([]);
 
     const handleOpenNew = () => setOpenNew(true);
     const handleCloseNew = () => setOpenNew(false);
-
-    const handleFechaEngraseChange = (event) => {
-        setFechaEngrase(event.target.value);
-    };
 
     const handleNumeroCargaChange = (event) => {
         setNumeroCarga(event.target.value);
@@ -418,14 +415,6 @@ function engrases() {
 
     const handleColorChange = (event) => {
         setColor(event.target.value);
-    };
-
-    const handleFechaSecadoChange = (event) => {
-        setFechaSecado(event.target.value);
-    };
-
-    const handleFechaFacturaChange = (event) => {
-        setFechaFactura(event.target.value);
     };
 
     const handleNumeroFacturaChange = (event) => {
@@ -555,7 +544,7 @@ function engrases() {
             .post('http://localhost:5555/engrase/', data)
             .then((response) => {
                 console.log(response.data.data);
-                // setOpenNew(false);
+                setOpenNew(false);
             })
             .catch((error) => {
                 console.log(error);
