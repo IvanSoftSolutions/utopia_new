@@ -62,8 +62,8 @@ function quimicos_entrada_salida() {
     }, [])
 
     return (
-        <div>
-            <Box sx={{}} >
+        <div style={{ display: "flex", width: "100%", justifyContent: "space-around" }}>
+            <Box>
                 <DataGrid
                     rows={rows}
                     columns={columns}
