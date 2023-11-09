@@ -19,8 +19,11 @@ export default function Formulas() {
     const [grosor, setGrosor] = React.useState(0);
     const [material, setMaterial] = React.useState('');
     const [detalles, setDetalles] = React.useState('');
+    const fecha = new Date().toDateString();
 
     const [rows, setRows] = useState([]);
+    const [totales, setTotales] = React.useState([]);
+    const [quimicosInv, setQuimicosInv] = React.useState([]);
 
     const handlePalletChange = (event) => {
         setPallet(event.target.value);
@@ -61,10 +64,36 @@ export default function Formulas() {
             .catch((error) => {
                 console.log(error);
             })
+
+        axios
+            .get('http://localhost:5555/formulas_totales/' + nombreFormula)
+            .then((response) => {
+                setTotales(response.data.data);
+                console.log(response.data.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+
+
+        let aux = 1;
+        axios
+            .get('http://localhost:5555/quimico_inventario/')
+            .then((response) => {
+                response.data.data.forEach(function (element) {
+                    element.id = aux;
+                    aux++;
+                })
+                setQuimicosInv(response.data.data);
+                console.log(response.data.data);
+            })
+
+            .catch((error) => {
+                console.log(error);
+            })
     }
 
     function postBitacoraLog() {
-        const fecha = new Date().toDateString();
         const formula = articulo + color;
 
         const data = {
@@ -89,11 +118,74 @@ export default function Formulas() {
             })
     }
 
+    function getCantidades() {
+        let cantidades = []
+
+        let totalesKeys = Object.keys(totales[0]);
+        let totalesValues = Object.values(totales[0]);
+
+        for (let i = 2; i < totalesKeys.length; i++) {
+            let data = {
+                nombre: stringFormatter(totalesKeys[i]),
+                cantidad: (totalesValues[i] * peso) / 100
+            }
+            cantidades.push(data);
+        }
+
+        return cantidades;
+
+    }
+
+    function updateQuimicoInv() {
+        let data = getCantidades();
+
+        for (let i = 0; i < data.length; i++) {
+            data[i].cantidad = quimicosInv.find(x => x.nombre === data[i].nombre).cantidad - data[i].cantidad;
+        }
+
+        console.log(data);
+
+        axios
+            .put('http://localhost:5555/formulas_totales/', data)
+            .then((response) => {
+                console.log(response.data.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
+    function postQuimicoBitacora() {
+        let data = getCantidades();
+
+        for (let i = 0; i < data.length; i++) {
+            data[i].fecha = fecha;
+            data[i].entradaSalida = 'Salida';
+        }
+
+        console.log(data);
+
+        axios
+            .post('http://localhost:5555/quimico_bitacora_out/', data)
+            .then((response) => {
+                console.log(response.data.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
     function cantidadValueGetter(params) {
         if (params.row.porcentaje === null) {
             return null;
         }
         return (params.row.porcentaje * peso / 100)
+    }
+
+    function stringFormatter(nombre) {
+        let result = nombre.charAt(0).toUpperCase() + nombre.slice(1);
+        result = result.replace(/.{1}$/, ' $&');
+        return result;
     }
 
     const columns = [
@@ -235,7 +327,9 @@ export default function Formulas() {
             </Box>
             <Box sx={{ display: "flex", justifyContent: "space-around" }} >
                 <Button variant="contained" sx={{ minWidth: "15em", marginTop: "2em", marginBottom: "2em" }} onClick={() => getFormulaRows(articulo + color)} >Buscar</Button>
-                <Button variant="contained" sx={{ minWidth: "15em", marginTop: "2em", marginBottom: "2em" }} onClick={postBitacoraLog} >Correr</Button>
+                <Button variant="contained" sx={{ minWidth: "15em", marginTop: "2em", marginBottom: "2em" }} onClick={() => {
+                    updateQuimicoInv(); postQuimicoBitacora(); postBitacoraLog();
+                }} >Correr</Button>
             </Box>
             <Box sx={{}} >
                 <DataGrid

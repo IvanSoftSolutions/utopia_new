@@ -229,6 +229,26 @@ function quimicos_inventario() {
             .catch((error) => {
                 console.log(error);
             })
+
+        const data2 = {
+            nombre: quimico,
+            cantidad: addCantidad,
+            fecha: new Date().toDateString(),
+            entradaSalida: 'Entrada'
+        }
+
+        console.log(data2);
+
+        axios
+            .post('http://localhost:5555/quimico_bitacora_in/', data2)
+            .then((response) => {
+                console.log(response.data.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+
+
     }
 
     return (
