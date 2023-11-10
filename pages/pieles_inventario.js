@@ -443,7 +443,7 @@ function inventario_pieles() {
             .post('http://localhost:5555/pieles_inventario/', data)
             .then((response) => {
                 console.log(response.data.data);
-                // setOpenNew(false);
+                setOpenNew(false);
             })
             .catch((error) => {
                 console.log(error);
