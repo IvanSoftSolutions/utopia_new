@@ -141,7 +141,7 @@ const style = {
 };
 
 function ventas_ventas() {
-    const [rows, setRows] = React.useState(false);
+    const [rows, setRows] = React.useState([]);
     const [folio, setFolio] = React.useState('');
     const [fecha, setFecha] = React.useState(new Date().toDateString());
     const [cliente, setCliente] = React.useState('');
@@ -251,7 +251,7 @@ function ventas_ventas() {
             .post('http://localhost:5555/ventas_ventas/', data)
             .then((response) => {
                 console.log(response.data.data);
-                // setOpenNew(false);
+                setOpenNew(false);
             })
             .catch((error) => {
                 console.log(error);
