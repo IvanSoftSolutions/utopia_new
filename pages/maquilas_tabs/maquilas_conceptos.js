@@ -1,4 +1,5 @@
 import * as React from 'react'
+import axios from 'axios';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
@@ -41,18 +42,6 @@ const columns = [
     },
 ];
 
-const rows = [
-    { id: 1, concepto: 'cosas voli', unidad: 'balones', precio: 'premium', tipo: 'Mikasa' },
-    { id: 2, concepto: 'cosas voli', unidad: 'balones', precio: 'premium', tipo: 'Mikasa' },
-    { id: 3, concepto: 'cosas voli', unidad: 'balones', precio: 'premium', tipo: 'Mikasa' },
-    { id: 4, concepto: 'cosas voli', unidad: 'balones', precio: 'premium', tipo: 'Mikasa' },
-    { id: 5, concepto: 'cosas voli', unidad: 'balones', precio: 'premium', tipo: 'Mikasa' },
-    { id: 6, concepto: 'cosas voli', unidad: 'balones', precio: 'premium', tipo: 'Mikasa' },
-    { id: 7, concepto: 'cosas voli', unidad: 'balones', precio: 'premium', tipo: 'Mikasa' },
-    { id: 8, concepto: 'cosas voli', unidad: 'balones', precio: 'premium', tipo: 'Mikasa' },
-    { id: 9, concepto: 'cosas voli', unidad: 'balones', precio: 'premium', tipo: 'Mikasa' },
-
-];
 
 const style = {
     position: 'absolute',
@@ -68,10 +57,73 @@ const style = {
 };
 
 function maquilas_conceptos() {
+    const [rows, setRows] = React.useState([]);
+    const [concepto, setConcepto] = React.useState('');
+    const [unidad, setUnidad] = React.useState(new Date().toDateString());
+    const [tipo, setTipo] = React.useState('');
+    const [precio, setPrecio] = React.useState('');
     const [openNew, setOpenNew] = React.useState(false);
+
+    const handleConceptoChange = (event) => {
+        setConcepto(event.target.value);
+    };
+
+    const handletUnidadChange = (event) => {
+        setUnidad(event.target.value);
+    };
+
+    const handleTipoChange = (event) => {
+        setTipo(event.target.value);
+    };
+
+    const handlePrecioChange = (event) => {
+        setPrecio(event.target.value);
+    };
+
+
 
     const handleOpenNew = () => setOpenNew(true);
     const handleCloseNew = () => setOpenNew(false);
+
+    React.useEffect(() => {
+        let aux = 1;
+        axios
+            .get('http://localhost:5555/maquilas_conceptos/')
+            .then((response) => {
+                console.log(response.data.data);
+                response.data.data.forEach(function (element) {
+                    element.id = aux;
+                    aux++;
+                })
+                setRows(response.data.data);
+            })
+
+            .catch((error) => {
+                console.log(error);
+            })
+    }, [])
+
+    function postConcepto() {
+
+        const data = {
+            concepto,
+            unidad,
+            tipo,
+            precio,
+        }
+
+        console.log(data);
+
+        axios
+            .post('http://localhost:5555/maquilas_conceptos/', data)
+            .then((response) => {
+                console.log(response.data.data);
+                // setOpenNew(false);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
 
     return (
         <div>
@@ -88,14 +140,14 @@ function maquilas_conceptos() {
                     <h3>IFORMACION DE CONCEPTO</h3>
                     <Box sx={{ display: "flex", justifyContent: "space-around" }}>
                         <Stack spacing={2}>
-                            <TextField sx={{ minWidth: "15em" }} id="Concepto" label="Concepto" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Unidad" label="Unidad" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Tipo" label="Tipo" variant="outlined" />
-                            <TextField sx={{ minWidth: "15em" }} id="Precio" label="Precio" variant="outlined" />
+                            <TextField sx={{ minWidth: "15em" }} id="Concepto" label="Concepto" variant="outlined" onChange={handleConceptoChange} />
+                            <TextField sx={{ minWidth: "15em" }} id="Unidad" label="Unidad" variant="outlined" onChange={handletUnidadChange} />
+                            <TextField sx={{ minWidth: "15em" }} id="Tipo" label="Tipo" variant="outlined" onChange={handleTipoChange} />
+                            <TextField sx={{ minWidth: "15em" }} id="Precio" label="Precio" variant="outlined" onChange={handlePrecioChange} />
                         </Stack>
                     </Box>
                     <Box sx={{ display: "flex", justifyContent: "space-around" }}>
-                        <Button variant="contained" sx={{ maxWidth: "6.5em", marginTop: "2em", marginBottom: "2em" }} >Aceptar</Button>
+                        <Button variant="contained" sx={{ maxWidth: "6.5em", marginTop: "2em", marginBottom: "2em" }} onClick={postConcepto}>Aceptar</Button>
                         <Button variant="contained" sx={{ maxWidth: "6.5em", marginTop: "2em", marginBottom: "2em" }} onClick={handleCloseNew} >Cancelar</Button>
                     </Box>
                 </Box>
