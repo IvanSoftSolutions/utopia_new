@@ -184,9 +184,9 @@ function maquilas_ventas() {
     React.useEffect(() => {
         let aux = 1;
         axios
-            .get('http://localhost:5555/maquilas_ventas/')
+            .get('https://utopia-new-api.onrender.com/maquilas_ventas/')
             .then((response) => {
-                console.log(response.data.data);
+                // console.log(response.data.data);
                 response.data.data.forEach(function (element) {
                     element.id = aux;
                     aux++;
@@ -218,9 +218,9 @@ function maquilas_ventas() {
         console.log(data);
 
         axios
-            .post('http://localhost:5555/maquilas_ventas/', data)
+            .post('https://utopia-new-api.onrender.com/maquilas_ventas/', data)
             .then((response) => {
-                console.log(response.data.data);
+                // console.log(response.data.data);
                 setOpenNew(false);
             })
             .catch((error) => {

@@ -56,20 +56,20 @@ export default function Formulas() {
 
     function getFormulaRows(nombreFormula) {
         axios
-            .get('http://localhost:5555/getformula/' + nombreFormula)
+            .get('https://utopia-new-api.onrender.com/getformula/' + nombreFormula)
             .then((response) => {
                 setRows(response.data.data);
-                console.log(response.data.data);
+                // console.log(response.data.data);
             })
             .catch((error) => {
                 console.log(error);
             })
 
         axios
-            .get('http://localhost:5555/formulas_totales/' + nombreFormula)
+            .get('https://utopia-new-api.onrender.com/formulas_totales/' + nombreFormula)
             .then((response) => {
                 setTotales(response.data.data);
-                console.log(response.data.data);
+                // console.log(response.data.data);
             })
             .catch((error) => {
                 console.log(error);
@@ -78,14 +78,14 @@ export default function Formulas() {
 
         let aux = 1;
         axios
-            .get('http://localhost:5555/quimico_inventario/')
+            .get('https://utopia-new-api.onrender.com/quimico_inventario/')
             .then((response) => {
                 response.data.data.forEach(function (element) {
                     element.id = aux;
                     aux++;
                 })
                 setQuimicosInv(response.data.data);
-                console.log(response.data.data);
+                // console.log(response.data.data);
             })
 
             .catch((error) => {
@@ -109,9 +109,9 @@ export default function Formulas() {
         console.log(data);
 
         axios
-            .post('http://localhost:5555/bitacora/', data)
+            .post('https://utopia-new-api.onrender.com/bitacora/', data)
             .then((response) => {
-                console.log(response.data.data);
+                // console.log(response.data.data);
             })
             .catch((error) => {
                 console.log(error);
@@ -146,9 +146,9 @@ export default function Formulas() {
         console.log(data);
 
         axios
-            .put('http://localhost:5555/formulas_totales/', data)
+            .put('https://utopia-new-api.onrender.com/formulas_totales/', data)
             .then((response) => {
-                console.log(response.data.data);
+                // console.log(response.data.data);
             })
             .catch((error) => {
                 console.log(error);
@@ -166,9 +166,9 @@ export default function Formulas() {
         console.log(data);
 
         axios
-            .post('http://localhost:5555/quimico_bitacora_out/', data)
+            .post('https://utopia-new-api.onrender.com/quimico_bitacora_out/', data)
             .then((response) => {
-                console.log(response.data.data);
+                // console.log(response.data.data);
             })
             .catch((error) => {
                 console.log(error);
@@ -339,7 +339,7 @@ export default function Formulas() {
                     initialState={{
                         pagination: {
                             paginationModel: {
-                                pageSize: 10,
+                                pageSize: 100,
                             },
                         },
                     }}

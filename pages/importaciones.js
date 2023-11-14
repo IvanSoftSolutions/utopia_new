@@ -354,9 +354,9 @@ function importaciones() {
     React.useEffect(() => {
         let aux = 1;
         axios
-            .get('http://localhost:5555/importaciones/')
+            .get('https://utopia-new-api.onrender.com/importaciones/')
             .then((response) => {
-                console.log(response.data.data);
+                // console.log(response.data.data);
                 response.data.data.forEach(function (element) {
                     element.id = aux;
                     aux++;
@@ -402,9 +402,9 @@ function importaciones() {
         console.log(data);
 
         axios
-            .post('http://localhost:5555/importaciones/', data)
+            .post('https://utopia-new-api.onrender.com/importaciones/', data)
             .then((response) => {
-                console.log(response.data.data);
+                // console.log(response.data.data);
                 setOpenNew(false);
             })
             .catch((error) => {

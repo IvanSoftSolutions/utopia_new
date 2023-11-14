@@ -484,9 +484,9 @@ function engrases() {
     React.useEffect(() => {
         let aux = 1;
         axios
-            .get('http://localhost:5555/engrase/')
+            .get('https://utopia-new-api.onrender.com/engrase/')
             .then((response) => {
-                console.log(response.data.data);
+                // console.log(response.data.data);
                 response.data.data.forEach(function (element) {
                     element.id = aux;
                     aux++;
@@ -540,9 +540,9 @@ function engrases() {
         console.log(data);
 
         axios
-            .post('http://localhost:5555/engrase/', data)
+            .post('https://utopia-new-api.onrender.com/engrase/', data)
             .then((response) => {
-                console.log(response.data.data);
+                // console.log(response.data.data);
                 setOpenNew(false);
             })
             .catch((error) => {

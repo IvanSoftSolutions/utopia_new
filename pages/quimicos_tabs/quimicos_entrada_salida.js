@@ -46,9 +46,9 @@ function quimicos_entrada_salida() {
     React.useEffect(() => {
         let aux = 1;
         axios
-            .get('http://localhost:5555/quimico_bitacora/')
+            .get('https://utopia-new-api.onrender.com/quimico_bitacora/')
             .then((response) => {
-                console.log(response.data.data);
+                // console.log(response.data.data);
                 response.data.data.forEach(function (element) {
                     element.id = aux;
                     aux++;
@@ -71,7 +71,7 @@ function quimicos_entrada_salida() {
                     initialState={{
                         pagination: {
                             paginationModel: {
-                                pageSize: 10,
+                                pageSize: 100,
                             },
                         },
                     }}

@@ -64,27 +64,15 @@ const columns = [
     },
 ];
 
-// const rows1 = [
-//     { id: 1, usuario: 'asdasd', formula: 'Jon', peso: 35, grosor: 10, material: 'vaca', detalles: 'asdkasdasd' },
-//     { id: 2, usuario: 'asdasd', formula: 'Cersei', peso: 42, grosor: 10, material: 'vaca', detalles: 'asdkasdasd' },
-//     { id: 3, usuario: 'asdasd', formula: 'Jaime', peso: 45, grosor: 10, material: 'vaca', detalles: 'asdkasdasd' },
-//     { id: 4, usuario: 'asdasd', formula: 'Arya', peso: 16, grosor: 10, material: 'vaca', detalles: 'asdkasdasd' },
-//     { id: 5, usuario: 'asdasd', formula: 'Daenerys', peso: null, grosor: 10, material: 'vaca', detalles: 'asdkasdasd' },
-//     { id: 6, usuario: 'asdasd', formula: null, peso: 150, grosor: 10, material: 'vaca', detalles: 'asdkasdasd' },
-//     { id: 7, usuario: 'asdasd', formula: 'Ferrara', peso: 44, grosor: 10, material: 'vaca', detalles: 'asdkasdasd' },
-//     { id: 8, usuario: 'asdasd', formula: 'Rossini', peso: 36, grosor: 10, material: 'vaca', detalles: 'asdkasdasd' },
-//     { id: 9, usuario: 'asdasd', formula: 'Harvey', peso: 65, grosor: 10, material: 'vaca', detalles: 'asdkasdasd' },
-// ];
-
 function bitacora_reportes() {
     const [rows, setRows] = React.useState([]);
 
     React.useEffect(() => {
         let aux = 1;
         axios
-            .get('http://localhost:5555/bitacora/')
+            .get('https://utopia-new-api.onrender.com/bitacora/')
             .then((response) => {
-                console.log(response.data.data);
+                // console.log(response.data.data);
                 response.data.data.forEach(function (element) {
                     element.id = aux;
                     aux++;

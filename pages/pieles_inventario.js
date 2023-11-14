@@ -391,9 +391,9 @@ function inventario_pieles() {
     React.useEffect(() => {
         let aux = 1;
         axios
-            .get('http://localhost:5555/pieles_inventario/')
+            .get('https://utopia-new-api.onrender.com/pieles_inventario/')
             .then((response) => {
-                console.log(response.data.data);
+                // console.log(response.data.data);
                 response.data.data.forEach(function (element) {
                     element.id = aux;
                     aux++;
@@ -440,9 +440,9 @@ function inventario_pieles() {
         console.log(data);
 
         axios
-            .post('http://localhost:5555/pieles_inventario/', data)
+            .post('https://utopia-new-api.onrender.com/pieles_inventario/', data)
             .then((response) => {
-                console.log(response.data.data);
+                // console.log(response.data.data);
                 setOpenNew(false);
             })
             .catch((error) => {
@@ -463,7 +463,7 @@ function inventario_pieles() {
                     initialState={{
                         pagination: {
                             paginationModel: {
-                                pageSize: 10,
+                                pageSize: 100,
                             },
                         },
                     }}

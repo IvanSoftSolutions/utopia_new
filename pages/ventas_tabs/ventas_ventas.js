@@ -212,9 +212,9 @@ function ventas_ventas() {
     React.useEffect(() => {
         let aux = 1;
         axios
-            .get('http://localhost:5555/ventas_ventas/')
+            .get('https://utopia-new-api.onrender.com/ventas_ventas/')
             .then((response) => {
-                console.log(response.data.data);
+                // console.log(response.data.data);
                 response.data.data.forEach(function (element) {
                     element.id = aux;
                     aux++;
@@ -248,9 +248,9 @@ function ventas_ventas() {
         console.log(data);
 
         axios
-            .post('http://localhost:5555/ventas_ventas/', data)
+            .post('https://utopia-new-api.onrender.com/ventas_ventas/', data)
             .then((response) => {
-                console.log(response.data.data);
+                // console.log(response.data.data);
                 setOpenNew(false);
             })
             .catch((error) => {

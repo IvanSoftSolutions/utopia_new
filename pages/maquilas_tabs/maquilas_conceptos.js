@@ -88,9 +88,9 @@ function maquilas_conceptos() {
     React.useEffect(() => {
         let aux = 1;
         axios
-            .get('http://localhost:5555/maquilas_conceptos/')
+            .get('https://utopia-new-api.onrender.com/maquilas_conceptos/')
             .then((response) => {
-                console.log(response.data.data);
+                // console.log(response.data.data);
                 response.data.data.forEach(function (element) {
                     element.id = aux;
                     aux++;
@@ -115,9 +115,9 @@ function maquilas_conceptos() {
         console.log(data);
 
         axios
-            .post('http://localhost:5555/maquilas_conceptos/', data)
+            .post('https://utopia-new-api.onrender.com/maquilas_conceptos/', data)
             .then((response) => {
-                console.log(response.data.data);
+                // console.log(response.data.data);
                 // setOpenNew(false);
             })
             .catch((error) => {

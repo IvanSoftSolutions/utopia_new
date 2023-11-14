@@ -171,9 +171,9 @@ function quimicos_inventario() {
     React.useEffect(() => {
         let aux = 1;
         axios
-            .get('http://localhost:5555/quimico_inventario/')
+            .get('https://utopia-new-api.onrender.com/quimico_inventario/')
             .then((response) => {
-                console.log(response.data.data);
+                // console.log(response.data.data);
                 response.data.data.forEach(function (element) {
                     element.id = aux;
                     aux++;
@@ -201,9 +201,9 @@ function quimicos_inventario() {
         console.log(data);
 
         axios
-            .post('http://localhost:5555/quimico_inventario/', data)
+            .post('https://utopia-new-api.onrender.com/quimico_inventario/', data)
             .then((response) => {
-                console.log(response.data.data);
+                // console.log(response.data.data);
                 // setOpenNew(false);
             })
             .catch((error) => {
@@ -221,9 +221,9 @@ function quimicos_inventario() {
         console.log(data);
 
         axios
-            .put('http://localhost:5555/quimico_inventario/', data)
+            .put('https://utopia-new-api.onrender.com/quimico_inventario/', data)
             .then((response) => {
-                console.log(response.data.data);
+                // console.log(response.data.data);
                 setOpenAdd(false);
             })
             .catch((error) => {
@@ -240,9 +240,9 @@ function quimicos_inventario() {
         console.log(data2);
 
         axios
-            .post('http://localhost:5555/quimico_bitacora_in/', data2)
+            .post('https://utopia-new-api.onrender.com/quimico_bitacora_in/', data2)
             .then((response) => {
-                console.log(response.data.data);
+                // console.log(response.data.data);
             })
             .catch((error) => {
                 console.log(error);
@@ -265,7 +265,7 @@ function quimicos_inventario() {
                     initialState={{
                         pagination: {
                             paginationModel: {
-                                pageSize: 10,
+                                pageSize: 100,
                             },
                         },
                     }}
