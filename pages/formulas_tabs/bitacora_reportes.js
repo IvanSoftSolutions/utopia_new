@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios';
 import Box from '@mui/material/Box';
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
@@ -64,10 +64,10 @@ const columns = [
     },
 ];
 
-function bitacora_reportes() {
-    const [rows, setRows] = React.useState([]);
+function Bitacora_reportes() {
+    const [rows, setRows] = useState([]);
 
-    React.useEffect(() => {
+    useEffect(() => {
         let aux = 1;
         axios
             .get('https://utopia-new-api.onrender.com/bitacora/')
@@ -112,4 +112,4 @@ function bitacora_reportes() {
     )
 }
 
-export default bitacora_reportes
+export default Bitacora_reportes

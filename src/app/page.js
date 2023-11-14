@@ -1,6 +1,6 @@
 'use client'
 
-import * as React from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -52,8 +52,8 @@ function a11yProps(index) {
 }
 
 export default function Home() {
-  const [value, setValue] = React.useState(0);
-  const [nestedValue, setNestedValue] = React.useState(0);
+  const [value, setValue] = useState(0);
+  const [nestedValue, setNestedValue] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);

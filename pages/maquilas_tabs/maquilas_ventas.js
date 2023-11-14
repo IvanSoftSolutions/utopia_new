@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios';
 import dayjs from 'dayjs';
 import Box from '@mui/material/Box';
@@ -122,21 +122,21 @@ const style = {
     overflow: 'scroll'
 };
 
-function maquilas_ventas() {
-    const [rows, setRows] = React.useState([]);
-    const [folio, setFolio] = React.useState('');
-    const [fecha, setFecha] = React.useState(new Date().toDateString());
-    const [cliente, setCliente] = React.useState('');
-    const [concepto, setConcepto] = React.useState('');
-    const [wholeHidesSides, setWholeHidesSides] = React.useState('');
-    const [cantidad, setCantidad] = React.useState(0);
-    const [precio, setPrecio] = React.useState(0);
-    const [totalPesos, setTotalPesos] = React.useState(0);
-    const [tasaCambio, setTasaCambio] = React.useState(0);
-    const [totalUsd, setTotalUsd] = React.useState(0);
-    const [observaciones, setObservaciones] = React.useState('');
+function Maquilas_ventas() {
+    const [rows, setRows] = useState([]);
+    const [folio, setFolio] = useState('');
+    const [fecha, setFecha] = useState(new Date().toDateString());
+    const [cliente, setCliente] = useState('');
+    const [concepto, setConcepto] = useState('');
+    const [wholeHidesSides, setWholeHidesSides] = useState('');
+    const [cantidad, setCantidad] = useState(0);
+    const [precio, setPrecio] = useState(0);
+    const [totalPesos, setTotalPesos] = useState(0);
+    const [tasaCambio, setTasaCambio] = useState(0);
+    const [totalUsd, setTotalUsd] = useState(0);
+    const [observaciones, setObservaciones] = useState('');
 
-    const [openNew, setOpenNew] = React.useState(false);
+    const [openNew, setOpenNew] = useState(false);
 
     const handleOpenNew = () => setOpenNew(true);
     const handleCloseNew = () => setOpenNew(false);
@@ -181,7 +181,7 @@ function maquilas_ventas() {
         setObservaciones(event.target.value);
     };
 
-    React.useEffect(() => {
+    useEffect(() => {
         let aux = 1;
         axios
             .get('https://utopia-new-api.onrender.com/maquilas_ventas/')
@@ -293,4 +293,4 @@ function maquilas_ventas() {
     )
 }
 
-export default maquilas_ventas
+export default Maquilas_ventas

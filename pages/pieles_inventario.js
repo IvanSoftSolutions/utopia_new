@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import dayjs from 'dayjs';
 import Box from '@mui/material/Box';
@@ -254,36 +254,36 @@ const style = {
     overflow: 'scroll'
 };
 
-function inventario_pieles() {
-    const [rows, setRows] = React.useState([]);
-    const [articulo, setArticulo] = React.useState('');
-    const [color, setColor] = React.useState('');
-    const [tipo, setTipo] = React.useState('');
-    const [kind, setKind] = React.useState('');
-    const [wholesHide, setWholesHide] = React.useState(0);
-    const [sides, setSides] = React.useState(0);
-    const [shrunkenShoulder, setShrunkenShoulder] = React.useState(0);
-    const [doubleButt, setDoubleButt] = React.useState(0);
-    const [total, setTotal] = React.useState(0);
-    const [grado, setGrado] = React.useState('');
-    const [ubicacion, setUbicacion] = React.useState('');
-    const [pallet, setPallet] = React.useState(0);
-    const [locacion, setLocacion] = React.useState('');
-    const [costoHide, setCostoHide] = React.useState(0);
-    const [piezasCosto, setPiezasCosto] = React.useState(0);
-    const [hongo, setHongo] = React.useState(false);
-    const [shaved, setShaved] = React.useState(false);
-    const [grosor, setGrosor] = React.useState(false);
-    const [lavado, setLavado] = React.useState(false);
-    const [rechazados, setRechazados] = React.useState(false);
-    const [upoTruck, setUpoTruck] = React.useState('');
-    const [fecha, setFecha] = React.useState(new Date().toDateString());
-    const [evaluador, setEvaluador] = React.useState('');
-    const [observaciones, setObservaciones] = React.useState('');
-    const [modificaciones, setModificaciones] = React.useState('');
-    const [evaluado, setEvaluado] = React.useState(false);
+function Inventario_pieles() {
+    const [rows, setRows] = useState([]);
+    const [articulo, setArticulo] = useState('');
+    const [color, setColor] = useState('');
+    const [tipo, setTipo] = useState('');
+    const [kind, setKind] = useState('');
+    const [wholesHide, setWholesHide] = useState(0);
+    const [sides, setSides] = useState(0);
+    const [shrunkenShoulder, setShrunkenShoulder] = useState(0);
+    const [doubleButt, setDoubleButt] = useState(0);
+    const [total, setTotal] = useState(0);
+    const [grado, setGrado] = useState('');
+    const [ubicacion, setUbicacion] = useState('');
+    const [pallet, setPallet] = useState(0);
+    const [locacion, setLocacion] = useState('');
+    const [costoHide, setCostoHide] = useState(0);
+    const [piezasCosto, setPiezasCosto] = useState(0);
+    const [hongo, setHongo] = useState(false);
+    const [shaved, setShaved] = useState(false);
+    const [grosor, setGrosor] = useState(false);
+    const [lavado, setLavado] = useState(false);
+    const [rechazados, setRechazados] = useState(false);
+    const [upoTruck, setUpoTruck] = useState('');
+    const [fecha, setFecha] = useState(new Date().toDateString());
+    const [evaluador, setEvaluador] = useState('');
+    const [observaciones, setObservaciones] = useState('');
+    const [modificaciones, setModificaciones] = useState('');
+    const [evaluado, setEvaluado] = useState(false);
 
-    const [openNew, setOpenNew] = React.useState(false);
+    const [openNew, setOpenNew] = useState(false);
 
     const handleOpenNew = () => setOpenNew(true);
     const handleCloseNew = () => setOpenNew(false);
@@ -388,7 +388,7 @@ function inventario_pieles() {
         setObservaciones(event.target.value);
     };
 
-    React.useEffect(() => {
+    useEffect(() => {
         let aux = 1;
         axios
             .get('https://utopia-new-api.onrender.com/pieles_inventario/')
@@ -551,4 +551,4 @@ function inventario_pieles() {
     )
 }
 
-export default inventario_pieles
+export default Inventario_pieles

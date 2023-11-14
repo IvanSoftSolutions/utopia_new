@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -55,14 +55,14 @@ const style = {
     textAlign: "center"
 };
 
-function ventas_conceptos() {
-    const [rows, setRows] = React.useState([]);
-    const [concepto, setConcepto] = React.useState('');
-    const [unidad, setUnidad] = React.useState(new Date().toDateString());
-    const [seleccion, setSeleccion] = React.useState('');
-    const [tipo, setTipo] = React.useState('');
+function Ventas_conceptos() {
+    const [rows, setRows] = useState([]);
+    const [concepto, setConcepto] = useState('');
+    const [unidad, setUnidad] = useState(new Date().toDateString());
+    const [seleccion, setSeleccion] = useState('');
+    const [tipo, setTipo] = useState('');
 
-    const [openNew, setOpenNew] = React.useState(false);
+    const [openNew, setOpenNew] = useState(false);
 
     const handleConceptoChange = (event) => {
         setConcepto(event.target.value);
@@ -84,7 +84,7 @@ function ventas_conceptos() {
     const handleOpenNew = () => setOpenNew(true);
     const handleCloseNew = () => setOpenNew(false);
 
-    React.useEffect(() => {
+    useEffect(() => {
         let aux = 1;
         axios
             .get('https://utopia-new-api.onrender.com/ventas_conceptos/')
@@ -175,4 +175,4 @@ function ventas_conceptos() {
     )
 }
 
-export default ventas_conceptos
+export default Ventas_conceptos

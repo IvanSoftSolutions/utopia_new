@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -56,13 +56,13 @@ const style = {
     textAlign: "center"
 };
 
-function maquilas_conceptos() {
-    const [rows, setRows] = React.useState([]);
-    const [concepto, setConcepto] = React.useState('');
-    const [unidad, setUnidad] = React.useState(new Date().toDateString());
-    const [tipo, setTipo] = React.useState('');
-    const [precio, setPrecio] = React.useState('');
-    const [openNew, setOpenNew] = React.useState(false);
+function Maquilas_conceptos() {
+    const [rows, setRows] = useState([]);
+    const [concepto, setConcepto] = useState('');
+    const [unidad, setUnidad] = useState(new Date().toDateString());
+    const [tipo, setTipo] = useState('');
+    const [precio, setPrecio] = useState('');
+    const [openNew, setOpenNew] = useState(false);
 
     const handleConceptoChange = (event) => {
         setConcepto(event.target.value);
@@ -85,7 +85,7 @@ function maquilas_conceptos() {
     const handleOpenNew = () => setOpenNew(true);
     const handleCloseNew = () => setOpenNew(false);
 
-    React.useEffect(() => {
+    useEffect(() => {
         let aux = 1;
         axios
             .get('https://utopia-new-api.onrender.com/maquilas_conceptos/')
@@ -178,4 +178,4 @@ function maquilas_conceptos() {
     )
 }
 
-export default maquilas_conceptos
+export default Maquilas_conceptos

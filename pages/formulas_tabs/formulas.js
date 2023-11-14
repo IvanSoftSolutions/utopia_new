@@ -12,18 +12,18 @@ import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 
 
 export default function Formulas() {
-    const [pallet, setPallet] = React.useState('');
-    const [articulo, setArticulo] = React.useState('');
-    const [color, setColor] = React.useState('');
-    const [peso, setPeso] = React.useState(0);
-    const [grosor, setGrosor] = React.useState(0);
-    const [material, setMaterial] = React.useState('');
-    const [detalles, setDetalles] = React.useState('');
+    const [pallet, setPallet] = useState('');
+    const [articulo, setArticulo] = useState('');
+    const [color, setColor] = useState('');
+    const [peso, setPeso] = useState(0);
+    const [grosor, setGrosor] = useState(0);
+    const [material, setMaterial] = useState('');
+    const [detalles, setDetalles] = useState('');
     const fecha = new Date().toDateString();
 
     const [rows, setRows] = useState([]);
-    const [totales, setTotales] = React.useState([]);
-    const [quimicosInv, setQuimicosInv] = React.useState([]);
+    const [totales, setTotales] = useState([]);
+    const [quimicosInv, setQuimicosInv] = useState([]);
 
     const handlePalletChange = (event) => {
         setPallet(event.target.value);

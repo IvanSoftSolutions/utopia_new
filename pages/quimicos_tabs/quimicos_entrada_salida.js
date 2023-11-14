@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Box from '@mui/material/Box';
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
@@ -40,10 +40,10 @@ const columns = [
 
 ];
 
-function quimicos_entrada_salida() {
-    const [rows, setRows] = React.useState([]);
+function Quimicos_entrada_salida() {
+    const [rows, setRows] = useState([]);
 
-    React.useEffect(() => {
+    useEffect(() => {
         let aux = 1;
         axios
             .get('https://utopia-new-api.onrender.com/quimico_bitacora/')
@@ -87,4 +87,4 @@ function quimicos_entrada_salida() {
     )
 }
 
-export default quimicos_entrada_salida
+export default Quimicos_entrada_salida

@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios';
 import dayjs from 'dayjs';
 import Box from '@mui/material/Box';
@@ -140,23 +140,23 @@ const style = {
     overflow: 'scroll'
 };
 
-function ventas_ventas() {
-    const [rows, setRows] = React.useState([]);
-    const [folio, setFolio] = React.useState('');
-    const [fecha, setFecha] = React.useState(new Date().toDateString());
-    const [cliente, setCliente] = React.useState('');
-    const [concepto, setConcepto] = React.useState('');
-    const [piezas, setPiezas] = React.useState(0);
-    const [wholeHidesSides, setWholeHidesSides] = React.useState('');
-    const [cantidad, setCantidad] = React.useState(0);
-    const [unidad, setUnidad] = React.useState('');
-    const [precio, setPrecio] = React.useState(0);
-    const [totalPesos, setTotalPesos] = React.useState(0);
-    const [tasaCambio, setTasaCambio] = React.useState(0);
-    const [totalUsd, setTotalUsd] = React.useState(0);
-    const [observaciones, setObservaciones] = React.useState('');
+function Ventas_ventas() {
+    const [rows, setRows] = useState([]);
+    const [folio, setFolio] = useState('');
+    const [fecha, setFecha] = useState(new Date().toDateString());
+    const [cliente, setCliente] = useState('');
+    const [concepto, setConcepto] = useState('');
+    const [piezas, setPiezas] = useState(0);
+    const [wholeHidesSides, setWholeHidesSides] = useState('');
+    const [cantidad, setCantidad] = useState(0);
+    const [unidad, setUnidad] = useState('');
+    const [precio, setPrecio] = useState(0);
+    const [totalPesos, setTotalPesos] = useState(0);
+    const [tasaCambio, setTasaCambio] = useState(0);
+    const [totalUsd, setTotalUsd] = useState(0);
+    const [observaciones, setObservaciones] = useState('');
 
-    const [openNew, setOpenNew] = React.useState(false);
+    const [openNew, setOpenNew] = useState(false);
 
     const handleOpenNew = () => setOpenNew(true);
     const handleCloseNew = () => setOpenNew(false);
@@ -209,7 +209,7 @@ function ventas_ventas() {
         setObservaciones(event.target.value);
     };
 
-    React.useEffect(() => {
+    useEffect(() => {
         let aux = 1;
         axios
             .get('https://utopia-new-api.onrender.com/ventas_ventas/')
@@ -326,4 +326,4 @@ function ventas_ventas() {
     )
 }
 
-export default ventas_ventas
+export default Ventas_ventas

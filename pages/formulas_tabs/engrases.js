@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios';
 import dayjs from 'dayjs';
 import Box from '@mui/material/Box';
@@ -338,44 +338,44 @@ const style = {
     overflow: 'scroll'
 };
 
-function engrases() {
-    const [rows, setRows] = React.useState([]);
+function Engrases() {
+    const [rows, setRows] = useState([]);
 
-    const [fechaEngrase, setFechaEngrase] = React.useState(new Date());
-    const [numeroCarga, setNumeroCarga] = React.useState(0);
-    const [cuero, setCuero] = React.useState('');
-    const [camionPartida, setCamionPartida] = React.useState(0);
-    const [kg, setKg] = React.useState(0);
-    const [piezas, setPiezas] = React.useState(0);
-    const [material, setMaterial] = React.useState('');
-    const [calibre, setCalibre] = React.useState(0);
-    const [linea, setLinea] = React.useState('');
-    const [color, setColor] = React.useState('');
-    const [fechaSecado, setFechaSecado] = React.useState(new Date());
-    const [korona, setKorona] = React.useState(false);
-    const [engraseSeco, setEngraseSeco] = React.useState(false);
-    const [escurrir, setEscurrir] = React.useState(false);
-    const [desvenado, setDesvenado] = React.useState(false);
-    const [bauce, setBauce] = React.useState(false);
-    const [vacio, setVacio] = React.useState(false);
-    const [taic, setTaic] = React.useState(false);
-    const [aereo, setAereo] = React.useState(false);
-    const [toggling, setToggling] = React.useState(false);
-    const [ablandado, setAblandado] = React.useState(false);
-    const [pulido, setPulido] = React.useState(false);
-    const [abatanado, setAbatanado] = React.useState(false);
-    const [vacio2, setVacio2] = React.useState(false);
-    const [pistolas, setPistolas] = React.useState(false);
-    const [roller, setRoller] = React.useState(false);
-    const [finilux, setFinilux] = React.useState(false);
-    const [rotoprex, setRotoprex] = React.useState(false);
-    const [partido, setPartido] = React.useState(false);
-    const [grabado, setGrabado] = React.useState(false);
-    const [envioPlanta, setEnvioPlanta] = React.useState(false);
-    const [fechaFactura, setFechaFactura] = React.useState(new Date());
-    const [numeroFactura, setNumeroFactura] = React.useState('');
+    const [fechaEngrase, setFechaEngrase] = useState(new Date());
+    const [numeroCarga, setNumeroCarga] = useState(0);
+    const [cuero, setCuero] = useState('');
+    const [camionPartida, setCamionPartida] = useState(0);
+    const [kg, setKg] = useState(0);
+    const [piezas, setPiezas] = useState(0);
+    const [material, setMaterial] = useState('');
+    const [calibre, setCalibre] = useState(0);
+    const [linea, setLinea] = useState('');
+    const [color, setColor] = useState('');
+    const [fechaSecado, setFechaSecado] = useState(new Date());
+    const [korona, setKorona] = useState(false);
+    const [engraseSeco, setEngraseSeco] = useState(false);
+    const [escurrir, setEscurrir] = useState(false);
+    const [desvenado, setDesvenado] = useState(false);
+    const [bauce, setBauce] = useState(false);
+    const [vacio, setVacio] = useState(false);
+    const [taic, setTaic] = useState(false);
+    const [aereo, setAereo] = useState(false);
+    const [toggling, setToggling] = useState(false);
+    const [ablandado, setAblandado] = useState(false);
+    const [pulido, setPulido] = useState(false);
+    const [abatanado, setAbatanado] = useState(false);
+    const [vacio2, setVacio2] = useState(false);
+    const [pistolas, setPistolas] = useState(false);
+    const [roller, setRoller] = useState(false);
+    const [finilux, setFinilux] = useState(false);
+    const [rotoprex, setRotoprex] = useState(false);
+    const [partido, setPartido] = useState(false);
+    const [grabado, setGrabado] = useState(false);
+    const [envioPlanta, setEnvioPlanta] = useState(false);
+    const [fechaFactura, setFechaFactura] = useState(new Date());
+    const [numeroFactura, setNumeroFactura] = useState('');
 
-    const [openNew, setOpenNew] = React.useState(false);
+    const [openNew, setOpenNew] = useState(false);
 
     const handleOpenNew = () => setOpenNew(true);
     const handleCloseNew = () => setOpenNew(false);
@@ -481,7 +481,7 @@ function engrases() {
         setEnvioPlanta(event.target.value);
     };
 
-    React.useEffect(() => {
+    useEffect(() => {
         let aux = 1;
         axios
             .get('https://utopia-new-api.onrender.com/engrase/')
@@ -707,4 +707,4 @@ function engrases() {
     )
 }
 
-export default engrases
+export default Engrases

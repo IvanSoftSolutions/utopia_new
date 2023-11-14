@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -111,20 +111,20 @@ const style = {
     textAlign: "center"
 };
 
-function quimicos_inventario() {
-    const [rows, setRows] = React.useState([]);
-    const [nombre, setNombre] = React.useState('');
-    const [productor, setProductor] = React.useState('');
-    const [presentacion, setPresentacion] = React.useState('');
-    const [cantidad, setCantidad] = React.useState(0);
-    const [peso, setPeso] = React.useState(0);
-    const [precio, setPrecio] = React.useState(0);
-    const [divisa, setDivisa] = React.useState('');
-    const [quimico, setQuimico] = React.useState('');
-    const [addCantidad, setAddCantidad] = React.useState(0);
+function Quimicos_inventario() {
+    const [rows, setRows] = useState([]);
+    const [nombre, setNombre] = useState('');
+    const [productor, setProductor] = useState('');
+    const [presentacion, setPresentacion] = useState('');
+    const [cantidad, setCantidad] = useState(0);
+    const [peso, setPeso] = useState(0);
+    const [precio, setPrecio] = useState(0);
+    const [divisa, setDivisa] = useState('');
+    const [quimico, setQuimico] = useState('');
+    const [addCantidad, setAddCantidad] = useState(0);
 
-    const [openNew, setOpenNew] = React.useState(false);
-    const [openAdd, setOpenAdd] = React.useState(false);
+    const [openNew, setOpenNew] = useState(false);
+    const [openAdd, setOpenAdd] = useState(false);
 
     const handleOpenNew = () => setOpenNew(true);
     const handleCloseNew = () => setOpenNew(false);
@@ -168,7 +168,7 @@ function quimicos_inventario() {
         setAddCantidad(event.target.value);
     };
 
-    React.useEffect(() => {
+    useEffect(() => {
         let aux = 1;
         axios
             .get('https://utopia-new-api.onrender.com/quimico_inventario/')
@@ -332,4 +332,4 @@ function quimicos_inventario() {
     )
 }
 
-export default quimicos_inventario
+export default Quimicos_inventario

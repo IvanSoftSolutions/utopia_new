@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import dayjs from 'dayjs';
 import Box from '@mui/material/Box';
@@ -238,35 +238,35 @@ const style = {
     overflow: 'scroll'
 };
 
-function importaciones() {
-    const [rows, setRows] = React.useState([]);
-    const [factura, setFactura] = React.useState(0);
-    const [contrato, setContrato] = React.useState('');
-    const [no, setNo] = React.useState('');
-    const [camion, setCamion] = React.useState('');
-    const [kind, setKind] = React.useState('');
-    const [pallets, setPallets] = React.useState(0);
-    const [valorUSD, setValorUSD] = React.useState(0);
-    const [hides, setHides] = React.useState(0);
-    const [peso, setPeso] = React.useState(0);
-    const [eta, setEta] = React.useState('');
-    const [truck, setTruck] = React.useState('');
-    const [insurance, setInsurance] = React.useState(0);
-    const [maquila, setMaquila] = React.useState('');
-    const [partida, setPartida] = React.useState('');
-    const [entrada, setEntrada] = React.useState('');
-    const [split, setSplit] = React.useState('');
-    const [final, setFinal] = React.useState('');
-    const [remojo, setRemojo] = React.useState('');
-    const [dividido, setDividido] = React.useState('');
-    const [entrega, setEntrega] = React.useState('');
-    const [tipo, setTipo] = React.useState('');
-    const [observaciones, setObservaciones] = React.useState('');
-    const [costoProceso, setCostoProceso] = React.useState(0);
-    const [facturaPagada, setFacturaPagada] = React.useState(false);
-    const [numeroFactura, setNumeroFactura] = React.useState(0);
+function Importaciones() {
+    const [rows, setRows] = useState([]);
+    const [factura, setFactura] = useState(0);
+    const [contrato, setContrato] = useState('');
+    const [no, setNo] = useState('');
+    const [camion, setCamion] = useState('');
+    const [kind, setKind] = useState('');
+    const [pallets, setPallets] = useState(0);
+    const [valorUSD, setValorUSD] = useState(0);
+    const [hides, setHides] = useState(0);
+    const [peso, setPeso] = useState(0);
+    const [eta, setEta] = useState('');
+    const [truck, setTruck] = useState('');
+    const [insurance, setInsurance] = useState(0);
+    const [maquila, setMaquila] = useState('');
+    const [partida, setPartida] = useState('');
+    const [entrada, setEntrada] = useState('');
+    const [split, setSplit] = useState('');
+    const [final, setFinal] = useState('');
+    const [remojo, setRemojo] = useState('');
+    const [dividido, setDividido] = useState('');
+    const [entrega, setEntrega] = useState('');
+    const [tipo, setTipo] = useState('');
+    const [observaciones, setObservaciones] = useState('');
+    const [costoProceso, setCostoProceso] = useState(0);
+    const [facturaPagada, setFacturaPagada] = useState(false);
+    const [numeroFactura, setNumeroFactura] = useState(0);
 
-    const [openNew, setOpenNew] = React.useState(false);
+    const [openNew, setOpenNew] = useState(false);
 
     const handleOpenNew = () => setOpenNew(true);
     const handleCloseNew = () => setOpenNew(false);
@@ -351,7 +351,7 @@ function importaciones() {
         setNumeroFactura(event.target.value);
     };
 
-    React.useEffect(() => {
+    useEffect(() => {
         let aux = 1;
         axios
             .get('https://utopia-new-api.onrender.com/importaciones/')
@@ -508,4 +508,4 @@ function importaciones() {
     )
 }
 
-export default importaciones
+export default Importaciones
